@@ -12,8 +12,10 @@ public class Target : MonoBehaviour
     }
     private void CheckInteraction()
     {
-        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit raycastHit, Mathf.Infinity, _layerMask))
-            raycastHit.collider.GetComponent<Item>().Interact(transform.position);
+        if (!Physics.Raycast(transform.position, transform.forward, out RaycastHit raycastHit, Mathf.Infinity, _layerMask))
+            return;
+        if(GetComponentInParent<InverntorySystem>().Equip(raycastHit.collider.gameObject))
+            raycastHit.collider.GetComponent<Item>().Interact();
     }
 
     private void OnEnable()
