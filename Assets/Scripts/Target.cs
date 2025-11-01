@@ -5,13 +5,13 @@ public class Target : MonoBehaviour
     private LayerMask _layerMask;
     private void Awake()
     {
-        _layerMask = LayerMask.GetMask("Ignore Raycast");
+        _layerMask = LayerMask.GetMask("Item");
     }
 
     private void FixedUpdate()
     {
         RaycastHit hit;
-
-        Debug.DrawRay(transform.position, transform.forward * 100, Color.yellow);
+        if(Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity, _layerMask))
+            Debug.DrawRay(transform.position, transform.forward * 100, Color.yellow);
     }
 }

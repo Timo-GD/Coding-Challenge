@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 186369256}
   - component: {fileID: 186369255}
   - component: {fileID: 186369254}
-  m_Layer: 2
+  m_Layer: 3
   m_Name: RightEye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -796,7 +796,7 @@ GameObject:
   - component: {fileID: 1391629100}
   - component: {fileID: 1391629099}
   - component: {fileID: 1391629098}
-  m_Layer: 2
+  m_Layer: 3
   m_Name: LeftEye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -907,7 +907,8 @@ GameObject:
   - component: {fileID: 1420321789}
   - component: {fileID: 1420321790}
   - component: {fileID: 1420321791}
-  m_Layer: 2
+  - component: {fileID: 1420321792}
+  m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1128,6 +1129,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 1830912705}
+--- !u!114 &1420321792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420321784}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 587aa45ba5ebe45459030c8b370ea51c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1634537694
 GameObject:
   m_ObjectHideFlags: 0
@@ -1139,7 +1152,7 @@ GameObject:
   - component: {fileID: 1634537695}
   - component: {fileID: 1634537696}
   - component: {fileID: 1634537697}
-  m_Layer: 2
+  m_Layer: 3
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1214,7 +1227,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1830912698}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.5, z: -5.53}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1371,7 +1384,7 @@ GameObject:
   - component: {fileID: 1913475102}
   - component: {fileID: 1913475101}
   - component: {fileID: 1913475107}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Flashlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
