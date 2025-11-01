@@ -50,6 +50,11 @@ public class PlayerMovement : MonoBehaviour
             _isGrounded = true;
     }
 
+    private void OnDestroy()
+    {
+        _jump.performed -= context => VerticalMovement();
+    }
+
     private void OnEnable()
     {
         _move.Enable();
