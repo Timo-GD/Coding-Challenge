@@ -53,8 +53,7 @@ public class InverntorySystem : MonoBehaviour
             _rightHandItem.gameObject.GetComponent<Item>().DeEquip();
             _rightHandItem = null;
         }
-
-        if (_leftHandItem != null)
+        else if (_leftHandItem != null)
         {
             _leftHandItem.gameObject.GetComponent<Item>().DeEquip();
             _leftHandItem = null;
