@@ -1556,6 +1556,23 @@ MonoBehaviour:
       m_Action: Use
       m_Flags: 8
     m_Flags: 0
+  _switch:
+    m_Name: Switch
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 91d64ed5-76c0-4042-91b0-4cf408656c6e
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: ae2494cd-c4c5-453d-8b02-407bd05a9350
+      m_Path: <Keyboard>/f
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Switch
+      m_Flags: 0
+    m_Flags: 0
   _rightHandTransform: {fileID: 493110058}
   _leftHandTransform: {fileID: 2137057779}
 --- !u!1 &1557751816
