@@ -1055,25 +1055,41 @@ MonoBehaviour:
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings:
-    - m_Name: 1D Axis
-      m_Id: 3407d9aa-0564-4fc5-a2cc-732256229498
-      m_Path: 1DAxis
+    - m_Name: 2D Vector
+      m_Id: 2a2317d1-3076-4750-971b-a030e85bed6f
+      m_Path: 2DVector
       m_Interactions: 
       m_Processors: 
       m_Groups: 
       m_Action: Move
       m_Flags: 4
-    - m_Name: Negative
-      m_Id: d95e3585-67b3-443f-b8f7-2c377fff2460
+    - m_Name: up
+      m_Id: 2ee57403-a3fc-48da-add1-d21fa7fc3e8e
+      m_Path: <Keyboard>/w
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: down
+      m_Id: 9700c495-47d2-46fe-a611-46c7f19828af
       m_Path: <Keyboard>/s
       m_Interactions: 
       m_Processors: 
       m_Groups: 
       m_Action: Move
       m_Flags: 8
-    - m_Name: Positive
-      m_Id: 2f8fb520-c282-42a8-b9a1-0bfac54e8593
-      m_Path: <Keyboard>/w
+    - m_Name: left
+      m_Id: 799fa11a-38d8-417d-95f2-46b19176e84f
+      m_Path: <Keyboard>/a
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: right
+      m_Id: 5ff335bb-6039-4667-9a66-99684a598c75
+      m_Path: <Keyboard>/d
       m_Interactions: 
       m_Processors: 
       m_Groups: 
