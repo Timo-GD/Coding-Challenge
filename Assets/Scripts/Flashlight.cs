@@ -18,10 +18,9 @@ public class Flashlight : Item
         _light.enabled = _light.enabled ? false : true;
     }
 
-    public override void Interact(Vector3 grabPoint)
+    public override void Interact()
     {
         _rigidBody.useGravity = false;
         _boxCollider.enabled = false;
-        _rigidBody.MovePosition(grabPoint);
     }
 }
