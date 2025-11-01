@@ -10,12 +10,8 @@ public class InverntorySystem : MonoBehaviour
     private Transform _rightHandItem;
     private Transform _leftHandItem;
 
-    // private Transform _rightHandItem;
-
-    private Rigidbody _rigidbody;
     private void Awake()
     {
-        _rigidbody = GetComponent<Rigidbody>();
         _drop.performed += context => DeEquip();
         _use.performed += context => Use();
     }
