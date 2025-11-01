@@ -5,6 +5,7 @@ public class InverntorySystem : MonoBehaviour
 {
     [SerializeField] private InputAction _drop;
     [SerializeField] private InputAction _use;
+    [SerializeField] private InputAction _switch;
     [SerializeField] private Transform _rightHandTransform;
     [SerializeField] private Transform _leftHandTransform;
     private Transform _rightHandItem;
@@ -14,6 +15,7 @@ public class InverntorySystem : MonoBehaviour
     {
         _drop.performed += context => DeEquip();
         _use.performed += context => Use();
+        _switch.performed += context => Switch();
     }
     private void LateUpdate()
     {
@@ -44,6 +46,15 @@ public class InverntorySystem : MonoBehaviour
             _leftHandItem.position = _leftHandTransform.position;
             _leftHandItem.rotation = _leftHandTransform.rotation;
         }
+    }
+
+    private void Switch()
+    {
+        Transform previousRightItem = _rightHandItem;
+        Transform previousLeftItem = _leftHandItem;
+
+        _leftHandItem = previousRightItem;
+        _rightHandItem = previousLeftItem;
     }
 
     private void DeEquip()
@@ -82,17 +93,20 @@ public class InverntorySystem : MonoBehaviour
     {
         _drop.performed -= context => DeEquip();
         _use.performed -= context => Use();
+        _switch.performed -= context => Switch();
     }
 
     private void OnEnable()
     {
         _use.Enable();
         _drop.Enable();
+        _switch.Enable();
     }
 
-    private void ODisable()
+    private void OnDisable()
     {
         _use.Enable();
         _drop.Disable();
+        _switch.Disable();
     }
 }
