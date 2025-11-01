@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
     private void HorizontalMovement(Vector3 horizontalVelocity)
     {
         if(_move.ReadValue<float>() != 0)
-            horizontalVelocity += Vector3.forward * _move.ReadValue<float>() * _speed;
+            horizontalVelocity += transform.forward * _move.ReadValue<float>() * _speed;
 
         _rigidbody.linearVelocity = new Vector3(horizontalVelocity.x, _rigidbody.linearVelocity.y, horizontalVelocity.z);
     }
