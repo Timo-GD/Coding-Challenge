@@ -7,7 +7,7 @@ public class Item : MonoBehaviour
 
     }
 
-    public virtual void Equip()
+    public virtual void Interact(Vector3 interacterPosition)
     {
 
     }
