@@ -22,15 +22,10 @@ public class PlayerMovement : MonoBehaviour
         Vector3 targetVelocity = Vector3.zero;
 
         HorizontalMovement(targetVelocity);
-            // Debug.Log("Jump");
-
     }
 
     private void HorizontalMovement(Vector3 horizontalVelocity)
     {
-        // if(_move.ReadValue<float>() != 0)
-        //     horizontalVelocity += transform.forward * _move.ReadValue<float>() * _speed;
-
         horizontalVelocity = transform.forward * _move.ReadValue<Vector2>().y + transform.right * _move.ReadValue<Vector2>().x;
 
         horizontalVelocity.Normalize();
