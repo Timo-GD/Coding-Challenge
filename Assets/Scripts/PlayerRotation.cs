@@ -8,7 +8,7 @@ public class PlayerRotation : MonoBehaviour
 
     private void Awake()
     {
-        _rigidBody = GetComponent<Rigidbody>();
+        _rigidBody = GetComponentInParent<Rigidbody>();
     }
 
 
@@ -20,7 +20,11 @@ public class PlayerRotation : MonoBehaviour
 
     private void Rotation()
     {
-        float rotationAxis = _camera.PanAxis.Value;
-        _rigidBody.MoveRotation(Quaternion.Euler(new Vector3(0, rotationAxis, 0)));
+        float pannAxis = _camera.PanAxis.Value;
+        float tiltAxis = _camera.TiltAxis.Value;
+
+        transform.rotation = Quaternion.Euler(new Vector3(tiltAxis, pannAxis, 0));
+        
+        _rigidBody.MoveRotation(Quaternion.Euler(new Vector3(0, pannAxis, 0)));
     }
 }
