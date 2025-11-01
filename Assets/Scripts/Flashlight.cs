@@ -3,13 +3,25 @@ using UnityEngine;
 public class Flashlight : Item
 {
     private Light _light;
+    private Rigidbody _rigidBody;
+    private BoxCollider _boxCollider;
+    private bool _isEquiped;
 
     private void Awake()
     {
         _light = GetComponent<Light>();
+        _rigidBody = GetComponent<Rigidbody>();
+        _boxCollider = GetComponent<BoxCollider>();
     }
     public override void Use()
     {
         _light.enabled = _light.enabled ? false : true;
+    }
+
+    public override void Interact(Vector3 grabPoint)
+    {
+        _rigidBody.useGravity = false;
+        _boxCollider.enabled = false;
+        _rigidBody.MovePosition(grabPoint);
     }
 }
