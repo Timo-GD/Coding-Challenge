@@ -650,12 +650,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 493110057}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.4, y: 0.1, z: 0.6}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.4, y: -0.39999998, z: 0.5999999}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1420321788}
+  m_Father: {fileID: 1634537695}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &679200335
 GameObject:
@@ -1385,8 +1385,6 @@ Transform:
   m_Children:
   - {fileID: 1634537695}
   - {fileID: 679200336}
-  - {fileID: 493110058}
-  - {fileID: 2137057779}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1420321789
@@ -1517,7 +1515,7 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 
-      m_Id: f2ae7e2f-5201-4e3a-b4ae-762112bcfe1a
+      m_Id: ff59b634-bc70-4595-9882-8bdf4947982f
       m_Path: <Keyboard>/g
       m_Interactions: 
       m_Processors: 
@@ -1668,6 +1666,8 @@ Transform:
   m_Children:
   - {fileID: 1391629097}
   - {fileID: 186369253}
+  - {fileID: 493110058}
+  - {fileID: 2137057779}
   m_Father: {fileID: 1420321788}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1634537696
@@ -2486,12 +2486,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2137057778}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.4, y: 0.1, z: 0.6}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.4, y: -0.39999998, z: 0.5999999}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1420321788}
+  m_Father: {fileID: 1634537695}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
