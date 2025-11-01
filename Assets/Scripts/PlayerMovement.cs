@@ -1,7 +1,11 @@
 using UnityEngine;
+using UnityEngine.Animations;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] private InputAction _move;
+    [SerializeField] private InputAction _jump;
     [SerializeField] private float _speed;
     [SerializeField] private float _jumpforce;
     private bool _isGrounded;
@@ -10,26 +14,50 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        _jump.performed += ctx => VerticalMovement();
     }
 
     private void FixedUpdate()
     {
         Vector3 targetVelocity = Vector3.zero;
+
         HorizontalMovement(targetVelocity);
-        VerticalMovement(targetVelocity);
+            // Debug.Log("Jump");
 
     }
 
     private void HorizontalMovement(Vector3 horizontalVelocity)
     {
-        horizontalVelocity += new Vector3(Vector3.forward.x * _speed, 0, Vector3.forward.z * _speed);
+        if(_move.ReadValue<float>() != 0)
+            horizontalVelocity += Vector3.forward * _move.ReadValue<float>() * _speed;
+
+        _rigidbody.linearVelocity = new Vector3(horizontalVelocity.x, _rigidbody.linearVelocity.y, horizontalVelocity.z);
     }
-    
-    private void VerticalMovement(Vector3 verticalVelocity)
+
+    private void VerticalMovement()
     {
         if (!_isGrounded)
             return;
+
         _rigidbody.AddForce(Vector3.up * _jumpforce, ForceMode.Impulse);
         _isGrounded = false;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+            _isGrounded = true;
+    }
+
+    private void OnEnable()
+    {
+        _move.Enable();
+        _jump.Enable();
+    }
+
+    private void ODisable()
+    {
+        _move.Disable();
+        _jump.Disable();
     }
 }
