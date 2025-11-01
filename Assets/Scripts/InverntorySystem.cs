@@ -7,8 +7,8 @@ public class InverntorySystem : MonoBehaviour
     [SerializeField] private InputAction _use;
     [SerializeField] private Transform _rightHandTransform;
     [SerializeField] private Transform _leftHandTransform;
-    private Rigidbody _rightHandItem;
-    private Rigidbody _leftHandItem;
+    private Transform _rightHandItem;
+    private Transform _leftHandItem;
 
     // private Transform _rightHandItem;
 
@@ -19,7 +19,7 @@ public class InverntorySystem : MonoBehaviour
         _drop.performed += context => DeEquip();
         _use.performed += context => Use();
     }
-    private void FixedUpdate()
+    private void LateUpdate()
     {
         if (_rightHandItem != null || _leftHandItem != null)
             UpdateHands();
@@ -39,16 +39,14 @@ public class InverntorySystem : MonoBehaviour
     {
         if (_rightHandItem != null)
         {
-            // _rightHandItem.position = _rightHandTransform.position;
-            // _rightHandItem.rotation = _rightHandTransform.rotation;
-            _rightHandItem.MovePosition(_rightHandTransform.position);
-            _rightHandItem.MoveRotation(_rightHandTransform.rotation);
+            _rightHandItem.position = _rightHandTransform.position;
+            _rightHandItem.rotation = _rightHandTransform.rotation;
         }
 
         if (_leftHandItem != null)
         {
-            _leftHandItem.MovePosition(_leftHandTransform.position);
-            _leftHandItem.MoveRotation(_leftHandTransform.rotation);
+            _leftHandItem.position = _leftHandTransform.position;
+            _leftHandItem.rotation = _leftHandTransform.rotation;
         }
     }
 
@@ -71,13 +69,12 @@ public class InverntorySystem : MonoBehaviour
     {
         if (_rightHandItem == null)
         {
-            // _rightHandItem = equipable.transform;
-            _rightHandItem = equipable.GetComponent<Rigidbody>();
+            _rightHandItem = equipable.transform;
             return true;
         }
         else if (_leftHandItem == null)
         {
-            _leftHandItem = equipable.GetComponent<Rigidbody>();
+            _leftHandItem = equipable.transform;
             return true;
         }
         else
