@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        _jump.performed += ctx => VerticalMovement();
+        _jump.performed += context => VerticalMovement();
     }
 
     private void FixedUpdate()
