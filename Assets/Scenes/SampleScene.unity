@@ -394,7 +394,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.501
+  near clip plane: 0.47
   far clip plane: 1000
   field of view: 60.000004
   orthographic: 0
@@ -933,7 +933,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.66
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -1249,7 +1249,7 @@ MonoBehaviour:
   Lens:
     FieldOfView: 60.000004
     OrthographicSize: 5
-    NearClipPlane: 0.501
+    NearClipPlane: 0.47
     FarClipPlane: 1000
     Dutch: 0
     ModeOverride: 0
