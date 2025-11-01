@@ -8,13 +8,12 @@ public class PlayerRotation : MonoBehaviour
 
     private void Awake()
     {
-        // _camera = GetComponentInChildren<CinemachinePanTilt>();
         _rigidBody = GetComponent<Rigidbody>();
     }
 
 
 
-    private void LateUpdate()
+    private void FixedUpdate()
     {
         Rotation();
     }
