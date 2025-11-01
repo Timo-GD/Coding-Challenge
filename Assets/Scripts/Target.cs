@@ -21,7 +21,7 @@ public class Target : MonoBehaviour
         _interact.Enable();
     }
 
-    private void ODisable()
+    private void OnDisable()
     {
         _interact.Disable();
     }
