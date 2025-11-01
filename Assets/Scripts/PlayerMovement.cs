@@ -19,13 +19,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector3 targetVelocity = Vector3.zero;
-
-        HorizontalMovement(targetVelocity);
+        HorizontalMovement();
     }
 
-    private void HorizontalMovement(Vector3 horizontalVelocity)
+    private void HorizontalMovement()
     {
+
+        Vector3 horizontalVelocity = Vector3.zero;
+
         horizontalVelocity = transform.forward * _move.ReadValue<Vector2>().y + transform.right * _move.ReadValue<Vector2>().x;
 
         horizontalVelocity.Normalize();
