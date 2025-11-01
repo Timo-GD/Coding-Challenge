@@ -15,7 +15,7 @@ public class Target : MonoBehaviour
         if (!Physics.Raycast(transform.position, transform.forward, out RaycastHit raycastHit, Mathf.Infinity, _layerMask))
             return;
         if (GetComponentInParent<InverntorySystem>().Equip(raycastHit.collider.gameObject))
-            raycastHit.collider.GetComponent<Item>().Interact();
+            raycastHit.collider.GetComponent<Item>().Equip();
     }
 
     private void OnDestroy()
