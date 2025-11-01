@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class InverntorySystem : MonoBehaviour
 {
-    [SerializeField] private InputAction _throw;
+    [SerializeField] private InputAction _drop;
     [SerializeField] private Transform _rightHandTransform;
     [SerializeField] private Transform _leftHandTransform;
     private Rigidbody _rightHandItem;
@@ -12,13 +12,12 @@ public class InverntorySystem : MonoBehaviour
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        _throw.performed += context => DeEquip();
+        _drop.performed += context => DeEquip();
     }
     private void FixedUpdate()
     {
         if (_rightHandItem != null || _leftHandItem != null)
             UpdateHands();
-
     }
 
     private void UpdateHands()
@@ -38,7 +37,17 @@ public class InverntorySystem : MonoBehaviour
 
     private void DeEquip()
     {
-        
+        if (_rightHandItem != null)
+        {
+            _rightHandItem.gameObject.GetComponent<Item>().DeEquip();
+            _rightHandItem = null;
+        }
+
+        if (_leftHandItem != null)
+        {
+            _leftHandItem.gameObject.GetComponent<Item>().DeEquip();
+            _leftHandItem = null;
+        }
     }
 
     public bool Equip(GameObject equipable)
@@ -59,18 +68,18 @@ public class InverntorySystem : MonoBehaviour
         }
     }
 
-    private void ODestroy()
+    private void OnDestroy()
     {
-        _throw.performed -= context => DeEquip();
+        _drop.performed -= context => DeEquip();
     }
 
     private void OnEnable()
     {
-        _throw.Enable();
+        _drop.Enable();
     }
 
     private void ODisable()
     {
-        _throw.Disable();
+        _drop.Disable();
     }
 }

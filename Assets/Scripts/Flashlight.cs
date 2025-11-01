@@ -18,9 +18,15 @@ public class Flashlight : Item
         _light.enabled = _light.enabled ? false : true;
     }
 
-    public override void Interact()
+    public override void Equip()
     {
         _rigidBody.useGravity = false;
         _boxCollider.enabled = false;
+    }
+
+    public override void DeEquip()
+    {
+        _rigidBody.useGravity = true;
+        _boxCollider.enabled = true;
     }
 }
