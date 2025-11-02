@@ -6,7 +6,6 @@ public class Gun : Item
 {
     [SerializeField] private GameObject _bulletGameObject;
     [SerializeField] private Transform _bulletExitPoint;
-    private Transform _parentTransform;
     private List<GameObject> _bulletPool = new();
     private int _magazineSize;
     private bool _isAutoFireMode;
@@ -47,16 +46,10 @@ public class Gun : Item
 
         currentBullet.transform.position = _bulletExitPoint.position;
         currentBullet.transform.rotation = _bulletExitPoint.rotation;
-        if (Physics.Raycast(_parentTransform.position, transform.forward, out RaycastHit rayCastHit, Mathf.Infinity))
+        if (Physics.Raycast(transform.parent.position, transform.forward, out RaycastHit rayCastHit, Mathf.Infinity))
             currentBullet.GetComponent<Bullet>().Fire(rayCastHit.point);
         else
-            currentBullet.GetComponent<Bullet>().Fire(_parentTransform.forward * 1000);
-    }
-
-    public override void Equip()
-    {
-        base.Equip();
-        _parentTransform = GetComponentInParent<Target>().gameObject.transform;
+            currentBullet.GetComponent<Bullet>().Fire(transform.parent.forward * 1000);
     }
 
     public override IEnumerator Using()
