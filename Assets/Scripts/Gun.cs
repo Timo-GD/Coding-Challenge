@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,8 @@ public class Gun : Item
     private Transform _parentTransform;
     private List<GameObject> _bulletPool = new();
     private int _magazineSize;
+    private bool _isAutoFireMode;
+    private bool _isAutoFiring;
     private void Awake()
     {
         Rigidbody = GetComponent<Rigidbody>();
@@ -24,13 +27,17 @@ public class Gun : Item
             _bulletPool.Add(bullet);
         }
     }
-    public override void Equip()
-    {
-        base.Equip();
-        _parentTransform = GetComponentInParent<Target>().gameObject.transform;
-    }
 
-    public override void Use()
+    private IEnumerator AutomaticFire()
+    {
+        while (_isAutoFiring)
+        {
+            Fire();
+            yield return new WaitForSeconds(0.25f);
+        }
+    }
+    
+    private void Fire()
     {
         if (_magazineSize <= 0)
             return;
@@ -44,6 +51,33 @@ public class Gun : Item
             currentBullet.GetComponent<Bullet>().Fire(rayCastHit.point);
         else
             currentBullet.GetComponent<Bullet>().Fire(_parentTransform.forward * 1000);
+    }
+
+    public override void Equip()
+    {
+        base.Equip();
+        _parentTransform = GetComponentInParent<Target>().gameObject.transform;
+    }
+
+    public override void Use()
+    {
+        if (!_isAutoFireMode)
+        {
+            Fire();
+            return;
+        }
+        _isAutoFiring = true;
+        StartCoroutine(AutomaticFire());
+    }
+
+    public override void StopUse()
+    {
+        _isAutoFiring = false;
+    }
+
+    public override void ModeSwitch()
+    {
+        _isAutoFireMode = _isAutoFireMode ? false : true;
     }
     
     public void Reload()

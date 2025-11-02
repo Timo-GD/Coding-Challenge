@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -15,6 +16,7 @@ public class InverntorySystem : MonoBehaviour
     {
         _drop.performed += context => DeEquip();
         _use.performed += context => Use();
+        _use.canceled += context => StopUse();
         _switch.performed += context => Switch();
     }
     private void LateUpdate()
@@ -31,6 +33,15 @@ public class InverntorySystem : MonoBehaviour
             _leftHandItem.gameObject.GetComponent<Item>().Use();
         else
             return;
+    }
+
+    private void StopUse()
+    {
+        if (_rightHandItem != null)
+            _rightHandItem.gameObject.GetComponent<Item>().StopUse();
+
+        if (_leftHandItem != null)
+            _leftHandItem.gameObject.GetComponent<Item>().StopUse();
     }
 
     private void UpdateHands()
@@ -97,6 +108,7 @@ public class InverntorySystem : MonoBehaviour
     {
         _drop.performed -= context => DeEquip();
         _use.performed -= context => Use();
+        _use.canceled -= context => StopUse();
         _switch.performed -= context => Switch();
     }
 

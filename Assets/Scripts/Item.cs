@@ -4,10 +4,20 @@ public class Item : MonoBehaviour
 {
     protected Rigidbody Rigidbody;
     protected BoxCollider[] BoxColliders;
-    
+
     public virtual void Use()
     {
 
+    }
+
+    public virtual void StopUse()
+    {
+        
+    }
+    
+    public virtual void ModeSwitch()
+    {
+        
     }
 
     public virtual void Equip()
