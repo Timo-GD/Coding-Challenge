@@ -78,13 +78,13 @@ public class InverntorySystem : MonoBehaviour
         if (_rightHandItem == null)
         {
             _rightHandItem = equipable.transform;
-            _rightHandItem.SetParent(transform);
+            _rightHandItem.SetParent(GetComponentsInChildren<Transform>()[1]);
             return true;
         }
         else if (_leftHandItem == null)
         {
             _leftHandItem = equipable.transform;
-            _leftHandItem.SetParent(transform);
+            _leftHandItem.SetParent(GetComponentsInChildren<Transform>()[1]);
             return true;
         }
         else
