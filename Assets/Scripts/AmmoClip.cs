@@ -10,6 +10,11 @@ public class AmmoClip : Item
         BoxColliders = GetComponentsInChildren<BoxCollider>();
     }
 
+    private void Reload()
+    {
+        _isEmpty = false;
+    }
+
     public override IEnumerator Using()
     {
         //TODO
@@ -21,7 +26,8 @@ public class AmmoClip : Item
 
         GetComponentInParent<InverntorySystem>().DeEquip(transform);
         _isEmpty = true;
-        // Destroy(gameObject);
-        yield break;
+
+        yield return new WaitForSeconds(5f);
+        Reload();
     }
 }
