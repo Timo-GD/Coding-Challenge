@@ -30,9 +30,9 @@ public class InverntorySystem : MonoBehaviour
     private void Use()
     {
         if (_use.ReadValue<float>() > 0 && _rightHandItem != null)
-            _rightHandItem.gameObject.GetComponent<Item>().Use();
+            StartCoroutine(_rightHandItem.gameObject.GetComponent<Item>().Using());
         else if (_use.ReadValue<float>() < 0 && _leftHandItem != null)
-            _leftHandItem.gameObject.GetComponent<Item>().Use();
+            StartCoroutine(_leftHandItem.gameObject.GetComponent<Item>().Using());
         else
             return;
     }
@@ -40,10 +40,10 @@ public class InverntorySystem : MonoBehaviour
     private void StopUse()
     {
         if (_rightHandItem != null)
-            _rightHandItem.gameObject.GetComponent<Item>().StopUse();
+            _rightHandItem.gameObject.GetComponent<Item>().StopUsing();
 
         if (_leftHandItem != null)
-            _leftHandItem.gameObject.GetComponent<Item>().StopUse();
+            _leftHandItem.gameObject.GetComponent<Item>().StopUsing();
     }
 
     private void SwitchUseMode()

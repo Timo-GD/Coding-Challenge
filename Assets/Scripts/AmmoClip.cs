@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class AmmoClip : Item
@@ -8,13 +9,14 @@ public class AmmoClip : Item
         BoxColliders = GetComponentsInChildren<BoxCollider>();
     }
 
-    public override void Use()
+    public override IEnumerator Using()
     {
         //TODO
         //Make this prettier if possible;
         if (transform.parent.GetComponentInChildren<Gun>() == null)
-            return;
+            yield break;
         transform.parent.GetComponentInChildren<Gun>().Reload();
         Destroy(gameObject);
+        yield break;
     }
 }

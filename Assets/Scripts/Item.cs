@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Item : MonoBehaviour
@@ -5,12 +6,12 @@ public class Item : MonoBehaviour
     protected Rigidbody Rigidbody;
     protected BoxCollider[] BoxColliders;
 
-    public virtual void Use()
+    public virtual IEnumerator Using()
     {
-
+        yield break;
     }
 
-    public virtual void StopUse()
+    public virtual void StopUsing()
     {
         
     }

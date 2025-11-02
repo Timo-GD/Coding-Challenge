@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Flashlight : Item
@@ -9,8 +10,9 @@ public class Flashlight : Item
         Rigidbody = GetComponent<Rigidbody>();
         BoxColliders = GetComponentsInChildren<BoxCollider>();
     }
-    public override void Use()
+    public override IEnumerator Using()
     {
         _light.enabled = _light.enabled ? false : true;
+        yield break;
     }
 }

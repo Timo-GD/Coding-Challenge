@@ -59,18 +59,23 @@ public class Gun : Item
         _parentTransform = GetComponentInParent<Target>().gameObject.transform;
     }
 
-    public override void Use()
+    public override IEnumerator Using()
     {
         if (!_isAutoFireMode)
         {
             Fire();
-            return;
+            yield break;
         }
         _isAutoFiring = true;
-        StartCoroutine(AutomaticFire());
+        while (_isAutoFiring)
+        {
+            Fire();
+            yield return new WaitForSeconds(0.25f);
+        }
+        // StartCoroutine(AutomaticFire());
     }
 
-    public override void StopUse()
+    public override void StopUsing()
     {
         _isAutoFiring = false;
     }
