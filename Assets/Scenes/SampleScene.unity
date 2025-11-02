@@ -1951,6 +1951,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1282383612801286481, guid: 1dc6e732dd418cf4eab25d95e52a4c10, type: 3}
+      propertyPath: _rayCastPoint
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1282383612801286481, guid: 1dc6e732dd418cf4eab25d95e52a4c10, type: 3}
       propertyPath: _bulletExitPoint
       value: 
       objectReference: {fileID: 396003151}
@@ -2001,6 +2005,14 @@ PrefabInstance:
     - target: {fileID: 2000215931859959678, guid: 1dc6e732dd418cf4eab25d95e52a4c10, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5018571959370342520, guid: 1dc6e732dd418cf4eab25d95e52a4c10, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -19.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5018571959370342520, guid: 1dc6e732dd418cf4eab25d95e52a4c10, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -16.99
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
