@@ -33,9 +33,11 @@ public class Rock : Item
 
     public override void StopUsing()
     {
+        if (!_isHeld)
+            return;
         _isHeld = false;
         Rigidbody.AddForce(transform.parent.forward * _throwForce, ForceMode.Impulse);
-        GetComponentInParent<InverntorySystem>().DeEquip();
+        GetComponentInParent<InverntorySystem>().DeEquip(transform);
         _throwForce = 4;
     }
     
