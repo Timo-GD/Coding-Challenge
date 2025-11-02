@@ -12,10 +12,11 @@ public class InverntorySystem : MonoBehaviour
     [SerializeField] private Transform _leftHandTransform;
     private Transform _rightHandItem;
     private Transform _leftHandItem;
+    private Transform _dropItem;
 
     private void Awake()
     {
-        _drop.performed += context => DeEquip();
+        _drop.performed += context => DeEquip(_dropItem = _rightHandItem != null ? _rightHandItem : _leftHandItem);
         _use.performed += context => Use();
         _use.canceled += context => StopUse();
         _useModeSwitch.performed += context => SwitchUseMode();
@@ -76,15 +77,15 @@ public class InverntorySystem : MonoBehaviour
         _rightHandItem = previousLeftItem;
     }
 
-    public void DeEquip()
+    public void DeEquip(Transform item)
     {
-        if (_rightHandItem != null)
+        if (item == _rightHandItem)
         {
             _rightHandItem.gameObject.GetComponent<Item>().DeEquip();
             _rightHandItem.SetParent(null);
             _rightHandItem = null;
         }
-        else if (_leftHandItem != null)
+        else if (item == _leftHandItem)
         {
             _leftHandItem.gameObject.GetComponent<Item>().DeEquip();
             _leftHandItem.SetParent(null);
@@ -114,7 +115,7 @@ public class InverntorySystem : MonoBehaviour
 
     private void OnDestroy()
     {
-        _drop.performed -= context => DeEquip();
+        _drop.performed -= context => DeEquip(_dropItem = _rightHandItem != null ? _rightHandItem : _leftHandItem);
         _use.performed -= context => Use();
         _use.canceled -= context => StopUse();
         _useModeSwitch.performed -= context => SwitchUseMode();
