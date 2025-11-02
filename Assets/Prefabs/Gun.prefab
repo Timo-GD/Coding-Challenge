@@ -258,6 +258,7 @@ Transform:
   - {fileID: 5617335727339543509}
   - {fileID: 29320080359451130}
   - {fileID: 1180290819564540001}
+  - {fileID: 5018571959370342520}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &493343779001847747
@@ -299,6 +300,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a6cde99cd1ee074b846df22bd409213, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _bulletGameObject: {fileID: 4309659388920294121, guid: 8ba14b320735720468953b6ee6b042b4, type: 3}
+  _bulletExitPoint: {fileID: 5018571959370342520}
 --- !u!65 &4141683661847925859
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -968,6 +971,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &8284483800810583726
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5018571959370342520}
+  m_Layer: 3
+  m_Name: BulletExitPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5018571959370342520
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8284483800810583726}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.08, z: 0.792}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2000215931859959678}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8991617891823211699
 GameObject:
   m_ObjectHideFlags: 0
