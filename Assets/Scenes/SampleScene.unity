@@ -1543,6 +1543,23 @@ MonoBehaviour:
       m_Action: Switch
       m_Flags: 0
     m_Flags: 0
+  _useModeSwitch:
+    m_Name: Use Mode Switch
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 5c6a9fde-469a-4057-9e67-c1f8fb7ca509
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 0809edf8-f391-47b9-850a-3f621f3c2f3d
+      m_Path: <Keyboard>/e
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Use Mode Switch
+      m_Flags: 0
+    m_Flags: 0
   _rightHandTransform: {fileID: 493110058}
   _leftHandTransform: {fileID: 2137057779}
 --- !u!1 &1462125003

@@ -7,6 +7,7 @@ public class InverntorySystem : MonoBehaviour
     [SerializeField] private InputAction _drop;
     [SerializeField] private InputAction _use;
     [SerializeField] private InputAction _switch;
+    [SerializeField] private InputAction _useModeSwitch;
     [SerializeField] private Transform _rightHandTransform;
     [SerializeField] private Transform _leftHandTransform;
     private Transform _rightHandItem;
@@ -17,6 +18,7 @@ public class InverntorySystem : MonoBehaviour
         _drop.performed += context => DeEquip();
         _use.performed += context => Use();
         _use.canceled += context => StopUse();
+        _useModeSwitch.performed += context => SwitchUseMode();
         _switch.performed += context => Switch();
     }
     private void LateUpdate()
@@ -42,6 +44,12 @@ public class InverntorySystem : MonoBehaviour
 
         if (_leftHandItem != null)
             _leftHandItem.gameObject.GetComponent<Item>().StopUse();
+    }
+
+    private void SwitchUseMode()
+    {
+        if (_rightHandItem != null)
+            _rightHandItem.gameObject.GetComponent<Item>().ModeSwitch();
     }
 
     private void UpdateHands()
@@ -109,12 +117,14 @@ public class InverntorySystem : MonoBehaviour
         _drop.performed -= context => DeEquip();
         _use.performed -= context => Use();
         _use.canceled -= context => StopUse();
+        _useModeSwitch.performed -= context => SwitchUseMode();
         _switch.performed -= context => Switch();
     }
 
     private void OnEnable()
     {
         _use.Enable();
+        _useModeSwitch.Enable();
         _drop.Enable();
         _switch.Enable();
     }
@@ -122,6 +132,7 @@ public class InverntorySystem : MonoBehaviour
     private void OnDisable()
     {
         _use.Enable();
+        _useModeSwitch.Enable();
         _drop.Disable();
         _switch.Disable();
     }
