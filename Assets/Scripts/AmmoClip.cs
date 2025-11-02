@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class AmmoClip : Item
 {
+    private bool _isEmpty;
     private void Awake()
     {
         Rigidbody = GetComponent<Rigidbody>();
@@ -13,10 +14,14 @@ public class AmmoClip : Item
     {
         //TODO
         //Make this prettier if possible;
-        if (transform.parent.GetComponentInChildren<Gun>() == null)
+
+        if (transform.parent.GetComponentInChildren<Gun>() == null || _isEmpty)
             yield break;
         transform.parent.GetComponentInChildren<Gun>().Reload();
-        Destroy(gameObject);
+
+        GetComponentInParent<InverntorySystem>().DeEquip(transform);
+        _isEmpty = true;
+        // Destroy(gameObject);
         yield break;
     }
 }
