@@ -76,7 +76,7 @@ public class InverntorySystem : MonoBehaviour
         _rightHandItem = previousLeftItem;
     }
 
-    private void DeEquip()
+    public void DeEquip()
     {
         if (_rightHandItem != null)
         {
