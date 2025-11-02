@@ -62,11 +62,13 @@ public class InverntorySystem : MonoBehaviour
         if (_rightHandItem != null)
         {
             _rightHandItem.gameObject.GetComponent<Item>().DeEquip();
+            _rightHandItem.SetParent(null);
             _rightHandItem = null;
         }
         else if (_leftHandItem != null)
         {
             _leftHandItem.gameObject.GetComponent<Item>().DeEquip();
+            _leftHandItem.SetParent(null);
             _leftHandItem = null;
         }
     }
@@ -76,11 +78,13 @@ public class InverntorySystem : MonoBehaviour
         if (_rightHandItem == null)
         {
             _rightHandItem = equipable.transform;
+            _rightHandItem.SetParent(transform);
             return true;
         }
         else if (_leftHandItem == null)
         {
             _leftHandItem = equipable.transform;
+            _leftHandItem.SetParent(transform);
             return true;
         }
         else
