@@ -119,11 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!4 &6505649 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2000215931859959678, guid: 1dc6e732dd418cf4eab25d95e52a4c10, type: 3}
-  m_PrefabInstance: {fileID: 6382252128226234002}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &186369252
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,37 +505,11 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   CustomBlends: {fileID: 0}
---- !u!1 &396003150
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 396003151}
-  m_Layer: 3
-  m_Name: BulletExitPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &396003151
+--- !u!4 &396003151 stripped
 Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 5018571959370342520, guid: 1dc6e732dd418cf4eab25d95e52a4c10, type: 3}
+  m_PrefabInstance: {fileID: 6382252128226234002}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 396003150}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.08, z: 0.792}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6505649}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1182,6 +1151,7 @@ Transform:
   m_Children:
   - {fileID: 1634537695}
   - {fileID: 679200336}
+  - {fileID: 1462125004}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1420321789
@@ -1372,6 +1342,60 @@ MonoBehaviour:
     m_Flags: 0
   _rightHandTransform: {fileID: 493110058}
   _leftHandTransform: {fileID: 2137057779}
+--- !u!1 &1462125003
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1462125004}
+  - component: {fileID: 1462125005}
+  m_Layer: 3
+  m_Name: FeetCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1462125004
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462125003}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalScale: {x: 0.25, y: 0.01, z: 0.25}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1420321788}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &1462125005
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462125003}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1557751816
 GameObject:
   m_ObjectHideFlags: 0
@@ -1934,10 +1958,6 @@ PrefabInstance:
       propertyPath: _bulletGameObject
       value: 
       objectReference: {fileID: 4309659388920294121, guid: 8ba14b320735720468953b6ee6b042b4, type: 3}
-    - target: {fileID: 1282383612801286481, guid: 1dc6e732dd418cf4eab25d95e52a4c10, type: 3}
-      propertyPath: _bulletsContainer
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 1565534839394372135, guid: 1dc6e732dd418cf4eab25d95e52a4c10, type: 3}
       propertyPath: m_Name
       value: Gun
@@ -1984,10 +2004,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 2000215931859959678, guid: 1dc6e732dd418cf4eab25d95e52a4c10, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 396003151}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1dc6e732dd418cf4eab25d95e52a4c10, type: 3}
 --- !u!1660057539 &9223372036854775807

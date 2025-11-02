@@ -39,15 +39,13 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!_isGrounded)
             return;
-
         _rigidbody.AddForce(Vector3.up * _jumpforce, ForceMode.Impulse);
         _isGrounded = false;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerStay(Collider other)
     {
-        if (collision.gameObject.CompareTag("Ground"))
-            _isGrounded = true;
+        _isGrounded = true;
     }
 
     private void OnDestroy()
