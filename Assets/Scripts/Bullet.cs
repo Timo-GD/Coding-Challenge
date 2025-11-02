@@ -12,6 +12,7 @@ public class Bullet : Item
 
     public void Fire(Vector3 targetPosition)
     {
+        Rigidbody.linearVelocity = Vector3.zero;
         Vector3 targetDirection = targetPosition - transform.position;
         Rigidbody.AddForce(targetDirection.normalized * _bulletSpeed, ForceMode.Impulse);
     }
