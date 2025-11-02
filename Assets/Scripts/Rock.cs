@@ -6,11 +6,17 @@ public class Rock : Item
     private bool _isHeld;
     private int _throwForce;
     private int _maxThrowForce = 10;
-    private int _minThrowForce = 1;
+    private int _minThrowForce = 5;
     private void Awake()
     {
         Rigidbody = GetComponent<Rigidbody>();
         BoxColliders = GetComponentsInChildren<BoxCollider>();
+    }
+
+    private void FixedUpdate()
+    {
+        if(Rigidbody.useGravity)
+            Rigidbody.AddForce(Physics.gravity * Rigidbody.mass);
     }
 
     public override IEnumerator Using()
@@ -20,8 +26,7 @@ public class Rock : Item
         {
             _throwForce++;
             _throwForce = Mathf.Clamp(_throwForce, _minThrowForce, _maxThrowForce);
-            Debug.Log(_throwForce);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(.5f);
         }
     }
 
@@ -30,6 +35,7 @@ public class Rock : Item
         _isHeld = false;
         Rigidbody.AddForce(transform.parent.forward * _throwForce, ForceMode.Impulse);
         GetComponentInParent<InverntorySystem>().DeEquip();
+        _throwForce = 4;
     }
     
 }
