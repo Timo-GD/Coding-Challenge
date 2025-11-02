@@ -37,12 +37,17 @@ public class Gun : Item
         GameObject currentBullet = _bulletPool[_magazineSize - 1];
         _magazineSize -= 1;
         currentBullet.SetActive(true);
-        
+
         currentBullet.transform.position = _bulletExitPoint.position;
         currentBullet.transform.rotation = _bulletExitPoint.rotation;
         if (Physics.Raycast(_parentTransform.position, transform.forward, out RaycastHit rayCastHit, Mathf.Infinity))
             currentBullet.GetComponent<Bullet>().Fire(rayCastHit.point);
         else
             currentBullet.GetComponent<Bullet>().Fire(_parentTransform.forward * 1000);
+    }
+    
+    public void Reload()
+    {
+        _magazineSize = 30;
     }
 }
