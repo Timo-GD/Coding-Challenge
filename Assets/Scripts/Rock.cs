@@ -15,8 +15,9 @@ public class Rock : Item
 
     private void FixedUpdate()
     {
-        if(Rigidbody.useGravity)
+        if (Rigidbody.useGravity)
             Rigidbody.AddForce(Physics.gravity * Rigidbody.mass);
+            
     }
 
     public override IEnumerator Using()
