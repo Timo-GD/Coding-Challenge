@@ -3,7 +3,7 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     protected Rigidbody Rigidbody;
-    protected BoxCollider BoxCollider;
+    protected BoxCollider[] BoxColliders;
     
     public virtual void Use()
     {
@@ -13,12 +13,14 @@ public class Item : MonoBehaviour
     public virtual void Equip()
     {
         Rigidbody.useGravity = false;
-        BoxCollider.enabled = false;
+        foreach(BoxCollider collider in BoxColliders)
+            collider.enabled = false;
     }
 
     public virtual void DeEquip()
     {
         Rigidbody.useGravity = true;
-        BoxCollider.enabled = true;
+        foreach(BoxCollider collider in BoxColliders)
+            collider.enabled = true;
     }
 }

@@ -5,9 +5,9 @@ public class Flashlight : Item
     private Light _light;
     private void Awake()
     {
-        _light = GetComponent<Light>();
+        _light = GetComponentInChildren<Light>();
         Rigidbody = GetComponent<Rigidbody>();
-        BoxCollider = GetComponent<BoxCollider>();
+        BoxColliders = GetComponentsInChildren<BoxCollider>();
     }
     public override void Use()
     {
