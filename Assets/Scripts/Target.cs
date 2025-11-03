@@ -14,7 +14,7 @@ public class Target : MonoBehaviour
     }
     private void CheckInteraction()
     {
-        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit armorHit, Mathf.Infinity, _armorLayer) && GetComponentInParent<ArmorSystem>().Equip(armorHit.collider.gameObject.tag))
+        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit armorHit, Mathf.Infinity, _armorLayer) && GetComponentInParent<ArmorSystem>().Equip(armorHit.collider.gameObject))
                 armorHit.collider.GetComponent<Item>().Equip();
         else if(Physics.Raycast(transform.position, transform.forward, out RaycastHit itemHit, Mathf.Infinity, _itemLayer) && GetComponentInParent<InverntorySystem>().Equip(itemHit.collider.gameObject))
                 itemHit.collider.GetComponent<Item>().Equip();
