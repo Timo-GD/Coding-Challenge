@@ -4,12 +4,7 @@ public class Bullet : Item
 {
     private int _bulletSpeed = 50;
     private bool _isHit;
-    private void Awake()
-    {
-        Rigidbody = GetComponent<Rigidbody>();
-        BoxColliders = GetComponentsInChildren<BoxCollider>();
-    }
-
+    
     public void Fire(Vector3 targetPosition)
     {
         Rigidbody.linearVelocity = Vector3.zero;

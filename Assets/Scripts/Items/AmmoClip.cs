@@ -4,12 +4,7 @@ using UnityEngine;
 public class AmmoClip : Item
 {
     private bool _isEmpty;
-    private void Awake()
-    {
-        Rigidbody = GetComponent<Rigidbody>();
-        BoxColliders = GetComponentsInChildren<BoxCollider>();
-    }
-
+    
     private void Reload()
     {
         _isEmpty = false;

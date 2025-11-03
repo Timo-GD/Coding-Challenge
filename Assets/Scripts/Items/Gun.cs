@@ -10,10 +10,10 @@ public class Gun : Item
     private int _magazineSize;
     private bool _isAutoFireMode;
     private bool _isAutoFiring;
-    private void Awake()
+    
+    public override void Awake()
     {
-        Rigidbody = GetComponent<Rigidbody>();
-        BoxColliders = GetComponentsInChildren<BoxCollider>();
+        base.Awake();
         _magazineSize = 30;
     }
 

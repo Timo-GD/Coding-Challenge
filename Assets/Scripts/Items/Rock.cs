@@ -7,12 +7,7 @@ public class Rock : Item
     private int _throwForce;
     private int _maxThrowForce = 10;
     private int _minThrowForce = 5;
-    private void Awake()
-    {
-        Rigidbody = GetComponent<Rigidbody>();
-        BoxColliders = GetComponentsInChildren<BoxCollider>();
-    }
-
+    
     private void FixedUpdate()
     {
         if (Rigidbody.useGravity)
