@@ -48,6 +48,11 @@ public class PlayerMovement : MonoBehaviour
         _isGrounded = true;
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        _isGrounded = false;
+    }
+
     private void OnDestroy()
     {
         _jump.performed -= context => VerticalMovement();
