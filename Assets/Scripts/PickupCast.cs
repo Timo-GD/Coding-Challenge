@@ -5,7 +5,7 @@ public class PickupCast : MonoBehaviour
 {
     [SerializeField] private InputAction _pickup;
 
-    RaycastHit[] _itemCastHits;
+    RaycastHit[] _itemCastHits = new RaycastHit[1];
     LayerMask _itemMask;
     LayerMask _armorMask;
 
@@ -18,8 +18,10 @@ public class PickupCast : MonoBehaviour
     private void TryPickUp()
     {
 
-        if (Physics.SphereCastNonAlloc(transform.position, 5f, transform.forward, _itemCastHits, Mathf.Infinity, _itemMask) == 0)
-            return;
+        Debug.Log(Physics.SphereCastNonAlloc(new Ray(transform.position, transform.forward), 1.25f, _itemCastHits, Mathf.Infinity, _itemMask));
+        // Debug.Log(Physics.SphereCast(transform.position, 5f, transform.forward, out RaycastHit ItemHit, Mathf.Infinity, _itemMask));
+        // if (Physics.SphereCastNonAlloc(transform.position, 5f, transform.forward, _itemCastHits, Mathf.Infinity, _itemMask) == 0)
+        return;
 
         for(int i = 0; i < _itemCastHits.Length; i++)
         {
@@ -39,7 +41,7 @@ public class PickupCast : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawSphere(transform.position, 1f);
+        Gizmos.DrawSphere(transform.position, 1.25f);
 
     }
 
