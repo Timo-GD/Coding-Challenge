@@ -67,7 +67,6 @@ public class NewInventorySystem : MonoBehaviour
         equipable.transform.rotation = transform.rotation;
         _inventoryItems.Add(hand, equipable);
 
-        Debug.Log(_inventoryItems.Keys);
         return true;
     }
 
