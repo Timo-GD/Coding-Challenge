@@ -33,7 +33,7 @@ public class Rock : Item
 
         _isHeld = false;
         Rigidbody.AddForce(transform.parent.forward * _throwForce, ForceMode.Impulse);
-        Hand.GetComponent<PickupCast>().DropItem();
+        Hand.GetComponent<PickupCast>().DropItem(true);
         _throwForce = 4;
     }
     

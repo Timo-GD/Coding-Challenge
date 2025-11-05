@@ -22,7 +22,7 @@ public class PickupCast : MonoBehaviour
         
         _pickup.performed += context => CheckUse();
         _pickup.canceled += context => StopUse();
-        _drop.performed += context => DropItem();
+        _drop.performed += context => DropItem(false);
         
         
 
@@ -85,13 +85,18 @@ public class PickupCast : MonoBehaviour
         _heldItem.StopUsing();
     }
     
-    public void DropItem()
+    public void DropItem(bool _selfDrop)
     {
         if (_heldItem == null)
             return;
+
+        if (!_inventorySystem.DeEquip(gameObject))
+            return;
+        //Either this way or give dropitem a bool and then give that bool to the inventory system;
+        if (_selfDrop)
+            _inventorySystem.DeEquip(gameObject);
         _canUse = false;
         _heldItem = null;
-        _inventorySystem.DeEquip(gameObject);
     }
 
 
@@ -104,7 +109,7 @@ public class PickupCast : MonoBehaviour
     {
         _pickup.performed -= context => CheckUse();
         _pickup.canceled -= context => StopUse();
-        _drop.performed -= context => DropItem();
+        _drop.performed -= context => DropItem(false);
     }
 
     private void OnEnable()

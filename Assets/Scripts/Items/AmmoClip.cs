@@ -19,7 +19,7 @@ public class AmmoClip : Item
             yield break;
             
         transform.parent.GetComponentInChildren<Gun>().Reload();
-        Hand.GetComponent<PickupCast>().DropItem();
+        Hand.GetComponent<PickupCast>().DropItem(true);
         _isEmpty = true;
 
         yield return new WaitForSeconds(5f);
