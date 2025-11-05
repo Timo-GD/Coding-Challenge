@@ -2298,7 +2298,31 @@ MonoBehaviour:
     m_Id: b1a6a48c-ec19-4ea5-83bd-6b7cb8f2e4b7
     m_Processors: 
     m_Interactions: 
-    m_SingletonActionBindings: []
+    m_SingletonActionBindings:
+    - m_Name: 1D Axis
+      m_Id: 86e2e2bc-219c-441b-ac45-b911c2eed10b
+      m_Path: 1DAxis
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Switch Item
+      m_Flags: 4
+    - m_Name: negative
+      m_Id: e4f1853d-7ea1-4e61-a6d2-e83f38ac9963
+      m_Path: <Mouse>/scroll/down
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Switch Item
+      m_Flags: 8
+    - m_Name: positive
+      m_Id: 02393ebb-abb3-4eed-830f-6132384f3a84
+      m_Path: <Mouse>/scroll/up
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Switch Item
+      m_Flags: 8
     m_Flags: 0
 --- !u!1 &2119725843
 GameObject:
