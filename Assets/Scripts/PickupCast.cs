@@ -52,8 +52,8 @@ public class PickupCast : MonoBehaviour
             return;
 
         _canUse = true;
-        _heldItem = _itemCastHits[0].collider.GetComponent<Item>();
         _itemCastHits[0].collider.GetComponent<Item>().Equip(gameObject);
+        _heldItem = _itemCastHits[0].collider.GetComponent<Item>();
     }
 
     private void Use()
@@ -74,6 +74,8 @@ public class PickupCast : MonoBehaviour
     
     public void DropItem()
     {
+        if (_heldItem == null)
+            return;
         _canUse = false;
         _heldItem = null;
         _inventorySystem.DeEquip(gameObject);
@@ -96,7 +98,7 @@ public class PickupCast : MonoBehaviour
     private void OnEnable()
     {
         _pickup.Enable();
-        _drop.Disable();
+        _drop.Enable();
     }
 
     private void OnDisable()
