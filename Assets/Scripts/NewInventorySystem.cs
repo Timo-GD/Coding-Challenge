@@ -28,10 +28,6 @@ public class NewInventorySystem : MonoBehaviour
 
     private void SwitchItems()
     {
-
-        if (_switchItem.ReadValue<float>() == 0)
-            return;
-
         PickupCast[] hands = GetComponentsInChildren<PickupCast>();
 
         if (hands.Length == 0)
@@ -40,7 +36,7 @@ public class NewInventorySystem : MonoBehaviour
         Item[] oldItems = new Item[hands.Length];
 
         for (int i = 0; i < hands.Length; i++)
-            oldItems[i] = hands[i].OldItem;
+            oldItems[i] = hands[i].HeldItem;
 
         for(int i = 0; i < hands.Length; i++)
         {

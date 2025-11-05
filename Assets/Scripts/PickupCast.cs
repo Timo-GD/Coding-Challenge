@@ -13,9 +13,6 @@ public class PickupCast : MonoBehaviour
     private bool _canUse;
     private Item _heldItem;
     public Item HeldItem => _heldItem;
-    private Item _oldItem;
-    public Item OldItem => _oldItem;
-
     private NewInventorySystem _inventorySystem;
     private RaycastHit[] _itemCastHits = new RaycastHit[1];
     private LayerMask _itemMask;
@@ -38,7 +35,6 @@ public class PickupCast : MonoBehaviour
     public void SwitchItem(Item newItem)
     {
         _heldItem = newItem;
-        _oldItem = _heldItem;
         if(_heldItem != null)
             _heldItem.transform.SetParent(transform);
     }
@@ -57,7 +53,6 @@ public class PickupCast : MonoBehaviour
 
         _canUse = true;
         _heldItem = _itemCastHits[0].collider.GetComponent<Item>();
-        _oldItem = _heldItem;
         _itemCastHits[0].collider.GetComponent<Item>().Equip(gameObject);
     }
 
