@@ -27,15 +27,6 @@ public class Gun : Item
             _bulletPool.Add(bullet);
         }
     }
-
-    private IEnumerator AutomaticFire()
-    {
-        while (_isAutoFiring)
-        {
-            Fire();
-            yield return new WaitForSeconds(0.25f);
-        }
-    }
     
     private void Fire()
     {
@@ -66,7 +57,6 @@ public class Gun : Item
             Fire();
             yield return new WaitForSeconds(0.25f);
         }
-        // StartCoroutine(AutomaticFire());
     }
 
     public override void StopUsing()
