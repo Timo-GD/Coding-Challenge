@@ -30,9 +30,10 @@ public class Rock : Item
     {
         if (!_isHeld)
             return;
+
         _isHeld = false;
         Rigidbody.AddForce(transform.parent.forward * _throwForce, ForceMode.Impulse);
-        GetComponentInParent<InverntorySystem>().DeEquip(transform);
+        Hand.GetComponent<PickupCast>().DropItem();
         _throwForce = 4;
     }
     

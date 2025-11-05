@@ -7,10 +7,9 @@ using UnityEngine.InputSystem;
 public class PickupCast : MonoBehaviour
 {
     [SerializeField] private InputAction _pickup;
-    [SerializeField] private InputAction _use;
     [SerializeField] private InputAction _drop;
 
-
+    private bool _canUse;
     private Item _heldItem;
     public Item HeldItem => _heldItem;
     private NewInventorySystem _inventorySystem;
@@ -20,10 +19,9 @@ public class PickupCast : MonoBehaviour
 
     private void Awake()
     {
-        _pickup.performed += context => TryPickUp();
-        _use.performed += context => Use();
-        _use.canceled += context => StopUse();
-
+        
+        _pickup.performed += context => CheckUse();
+        _pickup.canceled += context => StopUse();
         _drop.performed += context => DropItem();
         
         
@@ -35,8 +33,23 @@ public class PickupCast : MonoBehaviour
     public void SwitchItem(Item newItem)
     {
         _heldItem = newItem;
-        if(_heldItem != null)
+        if (_heldItem != null)
+        {
+            _canUse = true;
             _heldItem.transform.SetParent(transform);
+        }
+        else
+        {
+            _canUse = false;
+        }
+    }
+    
+    private void CheckUse()
+    {
+        if (!_canUse)
+            TryPickUp();
+        else
+            Use();
     }
 
     private void TryPickUp()
@@ -51,7 +64,7 @@ public class PickupCast : MonoBehaviour
         if (!_inventorySystem.Equip(gameObject, _itemCastHits[0].collider.GetComponent<Item>()))
             return;
 
-
+        _canUse = true;
         _itemCastHits[0].collider.GetComponent<Item>().Equip(gameObject);
         _heldItem = _itemCastHits[0].collider.GetComponent<Item>();
     }
@@ -76,6 +89,7 @@ public class PickupCast : MonoBehaviour
     {
         if (_heldItem == null)
             return;
+        _canUse = false;
         _heldItem = null;
         _inventorySystem.DeEquip(gameObject);
     }
@@ -88,23 +102,20 @@ public class PickupCast : MonoBehaviour
 
     private void OnDestroy()
     {
-        _pickup.performed -= context => TryPickUp();
-        _use.performed -= context => Use();
-        _use.canceled -= context => StopUse();
+        _pickup.performed -= context => CheckUse();
+        _pickup.canceled -= context => StopUse();
         _drop.performed -= context => DropItem();
     }
 
     private void OnEnable()
     {
         _pickup.Enable();
-        _use.Enable();
         _drop.Enable();
     }
 
     private void OnDisable()
     {
         _pickup.Disable();
-        _use.Enable();
         _drop.Disable();
     }
 }
