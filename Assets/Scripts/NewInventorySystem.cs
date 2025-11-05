@@ -6,6 +6,7 @@ public class NewInventorySystem : MonoBehaviour
 {
     [SerializeField] private InputAction _switchItem;
     private Dictionary<GameObject, Item> _inventoryItems = new();
+    private bool _isAlreadyDropped;
 
     private void Awake()
     {
@@ -70,11 +71,19 @@ public class NewInventorySystem : MonoBehaviour
         return true;
     }
 
-    public void DeEquip(GameObject hand)
+    public bool DeEquip(GameObject hand)
     {
+        if(_isAlreadyDropped)
+        {
+            _isAlreadyDropped = false;
+            return false;
+        }
+        if (_inventoryItems.Count > 1)
+            _isAlreadyDropped = true;
         _inventoryItems[hand].DeEquip();
         _inventoryItems[hand].transform.SetParent(null);
         _inventoryItems.Remove(hand);
+        return true;
     }
 
     private void OnDestroy()
