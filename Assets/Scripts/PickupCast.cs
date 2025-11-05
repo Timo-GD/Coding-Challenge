@@ -34,14 +34,9 @@ public class PickupCast : MonoBehaviour
     {
         _heldItem = newItem;
         if (_heldItem != null)
-        {
             _canUse = true;
-            _heldItem.transform.SetParent(transform);
-        }
         else
-        {
             _canUse = false;
-        }
     }
     
     private void CheckUse()
