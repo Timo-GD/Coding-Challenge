@@ -101,11 +101,8 @@ public class PickupCast : MonoBehaviour
         if (_heldItem == null)
             return;
 
-        if (!_inventorySystem.DeEquip(gameObject))
+        if (!_inventorySystem.DeEquip(gameObject, selfdrop))
             return;
-        //Either this way or give dropitem a bool and then give that bool to the inventory system;
-        if (selfdrop)
-            _inventorySystem.DeEquip(gameObject);
         _canUse = false;
         _heldItem = null;
     }

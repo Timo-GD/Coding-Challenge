@@ -72,14 +72,14 @@ public class NewInventorySystem : MonoBehaviour
         return true;
     }
 
-    public bool DeEquip(GameObject hand)
+    public bool DeEquip(GameObject hand, bool selfdrop)
     {
         if (_isAlreadyDropped)
         {
             _isAlreadyDropped = false;
             return false;
         }
-        if (_inventoryItems.Count > 1)
+        if (_inventoryItems.Count > 1 && !selfdrop)
             _isAlreadyDropped = true;
         _inventoryItems[hand].DeEquip();
         _inventoryItems[hand].transform.SetParent(null);
