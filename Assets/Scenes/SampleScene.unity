@@ -1178,6 +1178,23 @@ MonoBehaviour:
       m_Action: Drop
       m_Flags: 0
     m_Flags: 0
+  _switchUseMode:
+    m_Name: Switch Use Mode
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 2c136169-f0f5-498f-8e4e-839ec7cef95c
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 336b9ee9-a54e-4806-881b-5cdfa461573b
+      m_Path: <Keyboard>/q
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Switch Use Mode
+      m_Flags: 0
+    m_Flags: 0
 --- !u!1 &811781362
 GameObject:
   m_ObjectHideFlags: 0
@@ -1382,6 +1399,23 @@ MonoBehaviour:
       m_Processors: 
       m_Groups: 
       m_Action: Drop
+      m_Flags: 0
+    m_Flags: 0
+  _switchUseMode:
+    m_Name: Switch Use Mode
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 9af8696a-826f-4db2-aa00-7d1721a9c68a
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 336b9ee9-a54e-4806-881b-5cdfa461573b
+      m_Path: <Keyboard>/q
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Switch Use Mode
       m_Flags: 0
     m_Flags: 0
 --- !u!1 &1391629096

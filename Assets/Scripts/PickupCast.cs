@@ -8,6 +8,7 @@ public class PickupCast : MonoBehaviour
 {
     [SerializeField] private InputAction _pickup;
     [SerializeField] private InputAction _drop;
+    [SerializeField] private InputAction _switchUseMode;
 
     private bool _canUse;
     private Item _heldItem;
@@ -23,6 +24,7 @@ public class PickupCast : MonoBehaviour
         _pickup.performed += context => CheckUse();
         _pickup.canceled += context => StopUse();
         _drop.performed += context => DropItem(false);
+        _switchUseMode.performed += context => SwitchUseMode();
         
         
 
@@ -84,7 +86,16 @@ public class PickupCast : MonoBehaviour
 
         _heldItem.StopUsing();
     }
-    
+
+    private void SwitchUseMode()
+    {
+        if (_heldItem == null)
+            return;
+
+        if (!_inventorySystem.SwitchUseMode(gameObject))
+            return;
+    }
+
     public void DropItem(bool selfdrop)
     {
         if (_heldItem == null)
@@ -110,17 +121,20 @@ public class PickupCast : MonoBehaviour
         _pickup.performed -= context => CheckUse();
         _pickup.canceled -= context => StopUse();
         _drop.performed -= context => DropItem(false);
+        _switchUseMode.performed -= context => SwitchUseMode();
     }
 
     private void OnEnable()
     {
         _pickup.Enable();
         _drop.Enable();
+        _switchUseMode.Enable();
     }
 
     private void OnDisable()
     {
         _pickup.Disable();
         _drop.Disable();
+        _switchUseMode.Disable();
     }
 }

@@ -7,6 +7,7 @@ public class NewInventorySystem : MonoBehaviour
     [SerializeField] private InputAction _switchItem;
     private Dictionary<GameObject, Item> _inventoryItems = new();
     private bool _isAlreadyDropped;
+    private bool _isAlreadySwitched;
 
     private void Awake()
     {
@@ -73,7 +74,7 @@ public class NewInventorySystem : MonoBehaviour
 
     public bool DeEquip(GameObject hand)
     {
-        if(_isAlreadyDropped)
+        if (_isAlreadyDropped)
         {
             _isAlreadyDropped = false;
             return false;
@@ -83,6 +84,20 @@ public class NewInventorySystem : MonoBehaviour
         _inventoryItems[hand].DeEquip();
         _inventoryItems[hand].transform.SetParent(null);
         _inventoryItems.Remove(hand);
+        return true;
+    }
+    
+    public bool SwitchUseMode(GameObject hand)
+    {
+        if (_isAlreadySwitched)
+        {
+            _isAlreadySwitched = false;
+            return false;
+        }
+        if (_inventoryItems.Count > 1)
+            _isAlreadySwitched = true;
+
+        _inventoryItems[hand].ModeSwitch();
         return true;
     }
 
