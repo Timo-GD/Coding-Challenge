@@ -9,7 +9,13 @@ public class PickupCast : MonoBehaviour
     [SerializeField] private InputAction _pickup;
     [SerializeField] private InputAction _drop;
 
+
+    private bool _canUse;
     private Item _heldItem;
+    public Item HeldItem => _heldItem;
+    private Item _oldItem;
+    public Item OldItem => _oldItem;
+
     private NewInventorySystem _inventorySystem;
     private RaycastHit[] _itemCastHits = new RaycastHit[1];
     private LayerMask _itemMask;
@@ -18,7 +24,10 @@ public class PickupCast : MonoBehaviour
     private void Awake()
     {
         _pickup.performed += context => TryPickUp();
+        _pickup.performed += context => Use();
+        _pickup.canceled += context => StopUse();
 
+        _drop.performed += context => DropItem();
         
         
 
@@ -26,7 +35,13 @@ public class PickupCast : MonoBehaviour
         _inventorySystem = GetComponentInParent<NewInventorySystem>();
     }
 
-
+    public void SwitchItem(Item newItem)
+    {
+        _heldItem = newItem;
+        _oldItem = _heldItem;
+        if(_heldItem != null)
+            _heldItem.transform.SetParent(transform);
+    }
 
     private void TryPickUp()
     {
@@ -40,15 +55,15 @@ public class PickupCast : MonoBehaviour
         if (!_inventorySystem.Equip(gameObject, _itemCastHits[0].collider.GetComponent<Item>()))
             return;
 
-        _pickup.performed += context => Use();
-        _pickup.canceled += context => StopUse();
+        _canUse = true;
         _heldItem = _itemCastHits[0].collider.GetComponent<Item>();
+        _oldItem = _heldItem;
         _itemCastHits[0].collider.GetComponent<Item>().Equip(gameObject);
     }
 
     private void Use()
     {
-        if (_heldItem == null)
+        if (_heldItem == null || !_canUse)
             return;
 
         StartCoroutine(_heldItem.Using());
@@ -56,19 +71,31 @@ public class PickupCast : MonoBehaviour
 
     private void StopUse()
     {
-        if (_heldItem == null)
+        if (_heldItem == null || !_canUse)
             return;
 
         _heldItem.StopUsing();
     }
     
+    public void DropItem()
+    {
+        _canUse = false;
+        _heldItem = null;
+        _inventorySystem.DeEquip(gameObject);
+    }
 
 
-
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, .6f);
+    }
 
     private void OnDestroy()
     {
         _pickup.performed -= context => TryPickUp();
+        _pickup.performed -= context => Use();
+        _pickup.canceled -= context => StopUse();
+        _drop.performed -= context => DropItem();
     }
 
     private void OnEnable()
