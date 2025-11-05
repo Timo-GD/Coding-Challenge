@@ -87,19 +87,19 @@ public class NewInventorySystem : MonoBehaviour
         return true;
     }
     
-    public bool SwitchUseMode(GameObject hand)
-    {
-        if (_isAlreadySwitched)
-        {
-            _isAlreadySwitched = false;
-            return false;
-        }
-        if (_inventoryItems.Count > 1)
-            _isAlreadySwitched = true;
+    // public bool SwitchUseMode(GameObject hand)
+    // {
+    //     if (_isAlreadySwitched)
+    //     {
+    //         _isAlreadySwitched = false;
+    //         return false;
+    //     }
+    //     if (_inventoryItems.Count > 1)
+    //         _isAlreadySwitched = true;
 
-        _inventoryItems[hand].ModeSwitch();
-        return true;
-    }
+    //     _inventoryItems[hand].ModeSwitch();
+    //     return true;
+    // }
 
     private void OnDestroy()
     {

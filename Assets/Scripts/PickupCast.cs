@@ -91,9 +91,9 @@ public class PickupCast : MonoBehaviour
     {
         if (_heldItem == null)
             return;
-
-        if (!_inventorySystem.SwitchUseMode(gameObject))
-            return;
+        _heldItem.ModeSwitch();
+        // if (!_inventorySystem.SwitchUseMode(gameObject))
+        //     return;
     }
 
     public void DropItem(bool selfdrop)
