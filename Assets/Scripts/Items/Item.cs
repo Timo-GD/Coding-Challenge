@@ -5,6 +5,7 @@ public class Item : MonoBehaviour
 {
     protected Rigidbody Rigidbody;
     protected Collider[] Colliders;
+    protected GameObject Hand;
 
     public virtual void Awake()
     {
@@ -26,9 +27,12 @@ public class Item : MonoBehaviour
         
     }
 
-    public virtual void Equip()
+    public virtual void Equip(GameObject hand)
     {
+        Hand = hand;
         Rigidbody.useGravity = false;
+        Rigidbody.linearVelocity = Vector3.zero;
+        Rigidbody.angularVelocity = Vector3.zero;
         foreach(Collider collider in Colliders)
             collider.enabled = false;
     }
