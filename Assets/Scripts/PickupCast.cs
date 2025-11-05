@@ -20,10 +20,12 @@ public class PickupCast : MonoBehaviour
         _pickup.performed += context => TryPickUp();
 
         
+        
 
         _itemMask = LayerMask.GetMask("Item");
         _inventorySystem = GetComponentInParent<NewInventorySystem>();
     }
+
 
 
     private void TryPickUp()
@@ -38,15 +40,35 @@ public class PickupCast : MonoBehaviour
         if (!_inventorySystem.Equip(gameObject, _itemCastHits[0].collider.GetComponent<Item>()))
             return;
 
+        _pickup.performed += context => Use();
+        _pickup.canceled += context => StopUse();
         _heldItem = _itemCastHits[0].collider.GetComponent<Item>();
         _itemCastHits[0].collider.GetComponent<Item>().Equip(gameObject);
     }
+
+    private void Use()
+    {
+        if (_heldItem == null)
+            return;
+
+        StartCoroutine(_heldItem.Using());
+    }
+
+    private void StopUse()
+    {
+        if (_heldItem == null)
+            return;
+
+        _heldItem.StopUsing();
+    }
+    
+
+
 
 
     private void OnDestroy()
     {
         _pickup.performed -= context => TryPickUp();
-
     }
 
     private void OnEnable()
