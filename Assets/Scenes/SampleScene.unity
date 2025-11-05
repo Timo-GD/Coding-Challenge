@@ -1154,11 +1154,28 @@ MonoBehaviour:
     m_SingletonActionBindings:
     - m_Name: 
       m_Id: 9f5c5dc3-1177-4934-b596-77dd24d8a3d4
-      m_Path: <Mouse>/rightButton
+      m_Path: <Keyboard>/e
       m_Interactions: 
       m_Processors: 
       m_Groups: 
       m_Action: Pickup
+      m_Flags: 0
+    m_Flags: 0
+  _use:
+    m_Name: Use
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 45cde64f-4b02-484f-afd4-8e299ac335d8
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 5f9b1a6b-9db4-41ed-a116-5931e1edc3d4
+      m_Path: <Mouse>/rightButton
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Use
       m_Flags: 0
     m_Flags: 0
   _drop:
@@ -1360,11 +1377,28 @@ MonoBehaviour:
     m_SingletonActionBindings:
     - m_Name: 
       m_Id: 94283a73-762c-4ae6-9148-94fe9e3d6723
-      m_Path: <Mouse>/leftButton
+      m_Path: <Keyboard>/q
       m_Interactions: 
       m_Processors: 
       m_Groups: 
       m_Action: Pickup
+      m_Flags: 0
+    m_Flags: 0
+  _use:
+    m_Name: Use
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: a02514e8-a56e-4972-bc57-20fd6f4d3cae
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 5f9b1a6b-9db4-41ed-a116-5931e1edc3d4
+      m_Path: <Mouse>/leftButton
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Use
       m_Flags: 0
     m_Flags: 0
   _drop:
@@ -1376,7 +1410,7 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 
-      m_Id: ebe12bff-fdf7-41e6-8f16-23f70baa3464
+      m_Id: 6327cf3b-7139-4330-8297-84840160f12b
       m_Path: <Keyboard>/g
       m_Interactions: 
       m_Processors: 
