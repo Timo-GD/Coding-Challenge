@@ -39,6 +39,7 @@ public class Item : MonoBehaviour
 
     public virtual void DeEquip()
     {
+        Hand = null;
         Rigidbody.useGravity = true;
         foreach(Collider collider in Colliders)
             collider.enabled = true;
