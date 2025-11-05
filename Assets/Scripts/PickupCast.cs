@@ -34,9 +34,14 @@ public class PickupCast : MonoBehaviour
     {
         _heldItem = newItem;
         if (_heldItem != null)
+        {
+            _heldItem.Equip(gameObject);
             _canUse = true;
+        }
         else
+        {
             _canUse = false;
+        }
     }
     
     private void CheckUse()
