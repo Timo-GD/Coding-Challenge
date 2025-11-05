@@ -1161,6 +1161,23 @@ MonoBehaviour:
       m_Action: Pickup
       m_Flags: 0
     m_Flags: 0
+  _drop:
+    m_Name: Drop
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 96757eab-2a54-45cc-a780-06fac24304f4
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: ebe12bff-fdf7-41e6-8f16-23f70baa3464
+      m_Path: <Keyboard>/g
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Drop
+      m_Flags: 0
+    m_Flags: 0
 --- !u!1 &811781362
 GameObject:
   m_ObjectHideFlags: 0
@@ -1350,6 +1367,23 @@ MonoBehaviour:
       m_Action: Pickup
       m_Flags: 0
     m_Flags: 0
+  _drop:
+    m_Name: Drop
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 92fd157e-3e8f-4660-872d-67faceabd88f
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: ebe12bff-fdf7-41e6-8f16-23f70baa3464
+      m_Path: <Keyboard>/g
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Drop
+      m_Flags: 0
+    m_Flags: 0
 --- !u!1 &1391629096
 GameObject:
   m_ObjectHideFlags: 0
@@ -1469,7 +1503,6 @@ GameObject:
   - component: {fileID: 1420321788}
   - component: {fileID: 1420321789}
   - component: {fileID: 1420321790}
-  - component: {fileID: 1420321791}
   - component: {fileID: 1420321792}
   m_Layer: 0
   m_Name: Player
@@ -1603,104 +1636,6 @@ MonoBehaviour:
     m_Flags: 0
   _speed: 8
   _jumpforce: 4
---- !u!114 &1420321791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1420321784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b8553bff1df6624293e5569acaed614, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _drop:
-    m_Name: Drop
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 3023847f-8614-4181-9b4a-06e8586910ba
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: ff59b634-bc70-4595-9882-8bdf4947982f
-      m_Path: <Keyboard>/g
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Drop
-      m_Flags: 0
-    m_Flags: 0
-  _use:
-    m_Name: Use
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: b7399113-7cb9-40da-8c11-70c772251c85
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 1D Axis
-      m_Id: 52907de3-51ea-4bd0-a574-b90b1ad8e10d
-      m_Path: 1DAxis
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Use
-      m_Flags: 4
-    - m_Name: negative
-      m_Id: f601e69f-3862-44c4-9343-3d80e1b67981
-      m_Path: <Mouse>/rightButton
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Use
-      m_Flags: 8
-    - m_Name: positive
-      m_Id: 5bb7a9f1-c4a6-4355-89ef-765309e8f1f4
-      m_Path: <Mouse>/leftButton
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Use
-      m_Flags: 8
-    m_Flags: 0
-  _switch:
-    m_Name: Switch
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 91d64ed5-76c0-4042-91b0-4cf408656c6e
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: ae2494cd-c4c5-453d-8b02-407bd05a9350
-      m_Path: <Keyboard>/f
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Switch
-      m_Flags: 0
-    m_Flags: 0
-  _useModeSwitch:
-    m_Name: Use Mode Switch
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 5c6a9fde-469a-4057-9e67-c1f8fb7ca509
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 0809edf8-f391-47b9-850a-3f621f3c2f3d
-      m_Path: <Keyboard>/q
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Use Mode Switch
-      m_Flags: 0
-    m_Flags: 0
-  _rightHandTransform: {fileID: 493110058}
-  _leftHandTransform: {fileID: 2137057779}
 --- !u!114 &1420321792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1855,7 +1790,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1634537695}
-  - component: {fileID: 1634537696}
   - component: {fileID: 1634537697}
   m_Layer: 0
   m_Name: Head
@@ -1885,35 +1819,6 @@ Transform:
   - {fileID: 2114056174}
   m_Father: {fileID: 1420321788}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1634537696
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1634537694}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 587aa45ba5ebe45459030c8b370ea51c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _interact:
-    m_Name: Interact
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: fafc3b3c-c4a0-43a8-85e3-afcf06c4ccdc
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: adbb3b2f-d61d-4cd1-850e-36cd6a7a33bf
-      m_Path: <Keyboard>/e
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Interact
-      m_Flags: 0
-    m_Flags: 0
 --- !u!114 &1634537697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2386,6 +2291,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23ed4488251f37e48a817942a92999c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _switchItem:
+    m_Name: Switch Item
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: b1a6a48c-ec19-4ea5-83bd-6b7cb8f2e4b7
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &2119725843
 GameObject:
   m_ObjectHideFlags: 0
