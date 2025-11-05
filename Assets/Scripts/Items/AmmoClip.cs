@@ -17,9 +17,9 @@ public class AmmoClip : Item
 
         if (transform.parent.GetComponentInChildren<Gun>() == null || _isEmpty)
             yield break;
+            
         transform.parent.GetComponentInChildren<Gun>().Reload();
-
-        GetComponentInParent<InverntorySystem>().DeEquip(transform);
+        Hand.GetComponent<PickupCast>().DropItem();
         _isEmpty = true;
 
         yield return new WaitForSeconds(5f);

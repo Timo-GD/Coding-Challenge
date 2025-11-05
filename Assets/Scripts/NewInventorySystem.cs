@@ -62,7 +62,7 @@ public class NewInventorySystem : MonoBehaviour
             return false;
 
 
-        equipable.transform.SetParent(hand.transform, true);
+        equipable.transform.SetParent(transform, true);
         equipable.transform.position = hand.transform.position;
         equipable.transform.rotation = transform.rotation;
         _inventoryItems.Add(hand, equipable);
