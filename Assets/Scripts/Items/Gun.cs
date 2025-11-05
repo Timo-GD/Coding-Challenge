@@ -19,6 +19,7 @@ public class Gun : Item
 
     private void Start()
     {
+        //Place this in a game manager if size increases;
         for (int i = 1; i <= _magazineSize; i++)
         {
             GameObject bullet = Instantiate(_bulletGameObject);
