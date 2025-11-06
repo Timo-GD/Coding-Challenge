@@ -119,6 +119,24 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &159981482 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2209784167091325687, guid: 40dee01eaf0926146ad9f5535a445a39, type: 3}
+  m_PrefabInstance: {fileID: 5194340947579425527}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &159981487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 159981482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a07b15b7c016b9e4f843f1594aac75b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _armorType: 0
 --- !u!1 &186369252
 GameObject:
   m_ObjectHideFlags: 0
@@ -1636,10 +1654,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 635d0c8218afdaf47be57e9cb113efd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _headArmorTransform: {fileID: 1878559713}
-  _chestArmorTransform: {fileID: 0}
-  _legArmorTransform: {fileID: 0}
-  _feetArmorTransform: {fileID: 0}
 --- !u!1 &1462125003
 GameObject:
   m_ObjectHideFlags: 0
@@ -2663,10 +2677,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TopHat
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1739001742057757685, guid: 40dee01eaf0926146ad9f5535a445a39, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2209784167091325687, guid: 40dee01eaf0926146ad9f5535a445a39, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 159981487}
   m_SourcePrefab: {fileID: 100100000, guid: 40dee01eaf0926146ad9f5535a445a39, type: 3}
 --- !u!1001 &6382252128226234002
 PrefabInstance:
