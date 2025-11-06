@@ -1,4 +1,5 @@
 using CodingChallenge.Armor;
+using CodingChallenge.Interactable;
 using CodingChallenge.Items;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -54,7 +55,7 @@ namespace CodingChallenge.Inventory
             _drop.performed += context => DropItem(false);
             _switchUseMode.performed += context => SwitchUseMode();
             
-            _interectableMask = LayerMask.GetMask("Item", "Armor");
+            _interectableMask = LayerMask.GetMask("Item", "Armor", "Interactable");
             _inventorySystem = GetComponentInParent<InventorySystem>();
             _armorSystem = GetComponentInParent<ArmorSystem>();
         }
@@ -71,6 +72,12 @@ namespace CodingChallenge.Inventory
         {
             if (Physics.SphereCastNonAlloc(transform.position, .6f, transform.forward, _itemCastHits, 0, _interectableMask) == 0)
                 return;
+
+            if (_itemCastHits[0].collider.GetComponent<InteractableObject>() != null)
+            {
+                _itemCastHits[0].collider.GetComponent<InteractableObject>().Use();
+                return;
+            }
 
             if (_armorSystem.Equip(_itemCastHits[0].collider.GetComponent<ArmorItem>()))
                 return;
