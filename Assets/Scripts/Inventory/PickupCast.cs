@@ -1,8 +1,5 @@
-using System;
 using Armors;
 using Items;
-using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
