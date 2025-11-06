@@ -14,9 +14,9 @@ public class PickupCast : MonoBehaviour
     private Item _heldItem;
     public Item HeldItem => _heldItem;
     private NewInventorySystem _inventorySystem;
+    private ArmorSystem _armorSystem;
     private RaycastHit[] _itemCastHits = new RaycastHit[1];
-    private LayerMask _itemMask;
-    private LayerMask _armorMask;
+    private LayerMask _interectableMask;
 
     private void Awake()
     {
@@ -28,8 +28,10 @@ public class PickupCast : MonoBehaviour
         
         
 
-        _itemMask = LayerMask.GetMask("Item");
+        _interectableMask = LayerMask.GetMask("Item", "Armor");
         _inventorySystem = GetComponentInParent<NewInventorySystem>();
+        _armorSystem = GetComponentInParent<ArmorSystem>();
+        Debug.Log(_armorSystem);
     }
 
     public void SwitchItem(Item newItem)
@@ -56,12 +58,15 @@ public class PickupCast : MonoBehaviour
 
     private void TryPickUp()
     {
+        if (Physics.SphereCastNonAlloc(transform.position, .6f, transform.forward, _itemCastHits, 0, _interectableMask) == 0)
+            return;
+
+        if (_armorSystem.Equip(_itemCastHits[0].collider.GetComponent<Armor>()))
+            return;
 
         if (_heldItem != null)
             return;
             
-        if (Physics.SphereCastNonAlloc(transform.position, .6f, transform.forward, _itemCastHits, 0, _itemMask) == 0)
-            return;
 
         if (!_inventorySystem.Equip(gameObject, _itemCastHits[0].collider.GetComponent<Item>()))
             return;

@@ -3,22 +3,46 @@ using UnityEngine;
 
 public class ArmorSystem : MonoBehaviour
 {
-    private Dictionary<ArmorType, Armor> _armorPieces;
+    private Dictionary<Armor, Armor> _armorPieces = new();
+    private Armor[] _armorSlots;
     private void Awake()
     {
-        
+        _armorSlots = GetComponentsInChildren<Armor>();
+        for (int i = 0; i < _armorSlots.Length; i++)
+            Debug.Log(_armorSlots[i]);
     }
     private void LateUpdate()
     {
-        
+        UpdateArmor();
     }
+
+    private void UpdateArmor()
+    {
+        foreach(KeyValuePair<Armor, Armor> armor in _armorPieces)
+        {
+            armor.Value.transform.position = armor.Key.transform.position;
+            armor.Value.transform.rotation = armor.Key.transform.rotation;
+        }
+    }
+
     public bool Equip(Armor armorPiece)
     {
-        if (!_armorPieces.ContainsKey(armorPiece.GetArmorType()))
+        if (armorPiece == null)
             return false;
 
-        _armorPieces.Add(armorPiece.GetArmorType(), armorPiece);
-        armorPiece.transform.SetParent(null);
-        return true;
+        for (int i = 0; i < _armorSlots.Length; i++)
+        {
+            if (armorPiece.GetArmorType() != _armorSlots[i].GetArmorType())
+                continue;
+
+            if (_armorPieces.ContainsKey(_armorSlots[i]))
+                continue;
+
+            armorPiece.Equip(_armorSlots[i].gameObject);
+            armorPiece.transform.SetParent(_armorSlots[i].transform, true);
+            _armorPieces.Add(_armorSlots[i], armorPiece);
+            return true;
+        }
+        return false;
     }
 }
