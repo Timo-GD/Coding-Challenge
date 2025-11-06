@@ -8,8 +8,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private InputAction _jump;
     [SerializeField] private float _speed;
     [SerializeField] private float _jumpforce;
-    private bool _isGrounded;
+
     private Rigidbody _rigidbody;
+    private bool _isGrounded;
 
     private void Awake()
     {
@@ -39,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!_isGrounded)
             return;
+            
         _rigidbody.AddForce(Vector3.up * _jumpforce, ForceMode.Impulse);
         _isGrounded = false;
     }

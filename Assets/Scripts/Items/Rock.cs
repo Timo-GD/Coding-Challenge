@@ -8,13 +8,6 @@ public class Rock : Item
     private int _maxThrowForce = 10;
     private int _minThrowForce = 5;
     
-    private void FixedUpdate()
-    {
-        if (Rigidbody.useGravity)
-            Rigidbody.AddForce(Physics.gravity * Rigidbody.mass);
-            
-    }
-
     public override IEnumerator Using()
     {
         _isHeld = true;
@@ -32,9 +25,15 @@ public class Rock : Item
             return;
 
         _isHeld = false;
-        Rigidbody.AddForce(transform.parent.forward * _throwForce, ForceMode.Impulse);
-        Hand.GetComponent<PickupCast>().DropItem(true);
+        _rigidbody.AddForce(transform.parent.forward * _throwForce, ForceMode.Impulse);
+        _hand.DropItem(true);
         _throwForce = 4;
     }
-    
+
+    private void FixedUpdate()
+    {
+        if (_rigidbody.useGravity)
+            _rigidbody.AddForce(Physics.gravity * _rigidbody.mass);
+            
+    }
 }

@@ -3,14 +3,15 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    protected Rigidbody Rigidbody;
-    protected Collider[] Colliders;
-    protected GameObject Hand;
+    protected Rigidbody _rigidbody;
+    protected Collider[] _colliders;
+    protected PickupCast _hand;
+    protected bool _isSecondaryMode;
 
     public virtual void Awake()
     {
-        Rigidbody = GetComponent<Rigidbody>();
-        Colliders = GetComponentsInChildren<Collider>();
+        _rigidbody = GetComponent<Rigidbody>();
+        _colliders = GetComponentsInChildren<Collider>();
     }
     public virtual IEnumerator Using()
     {
@@ -24,24 +25,24 @@ public class Item : MonoBehaviour
     
     public virtual void ModeSwitch()
     {
-        
+        _isSecondaryMode = _isSecondaryMode ? false : true;
     }
 
-    public virtual void Equip(GameObject hand)
+    public virtual void Equip(PickupCast hand)
     {
-        Hand = hand;
-        Rigidbody.useGravity = false;
-        Rigidbody.linearVelocity = Vector3.zero;
-        Rigidbody.angularVelocity = Vector3.zero;
-        foreach(Collider collider in Colliders)
+        _hand = hand;
+        _rigidbody.useGravity = false;
+        _rigidbody.linearVelocity = Vector3.zero;
+        _rigidbody.angularVelocity = Vector3.zero;
+        foreach(Collider collider in _colliders)
             collider.enabled = false;
     }
 
     public virtual void DeEquip()
     {
-        Hand = null;
-        Rigidbody.useGravity = true;
-        foreach(Collider collider in Colliders)
+        _hand = null;
+        _rigidbody.useGravity = true;
+        foreach(Collider collider in _colliders)
             collider.enabled = true;
     }
 }

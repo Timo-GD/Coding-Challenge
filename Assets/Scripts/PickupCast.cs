@@ -6,17 +6,44 @@ using UnityEngine.InputSystem;
 
 public class PickupCast : MonoBehaviour
 {
+    public Item HeldItem => _heldItem;
+
     [SerializeField] private InputAction _pickup;
     [SerializeField] private InputAction _drop;
     [SerializeField] private InputAction _switchUseMode;
 
-    private bool _canUse;
-    private Item _heldItem;
-    public Item HeldItem => _heldItem;
-    private NewInventorySystem _inventorySystem;
-    private ArmorSystem _armorSystem;
     private RaycastHit[] _itemCastHits = new RaycastHit[1];
+    private Item _heldItem;
+    private InventorySystem _inventorySystem;
+    private ArmorSystem _armorSystem;
     private LayerMask _interectableMask;
+    private bool _canUse;
+
+    public void SwitchItem(Item newItem)
+    {
+        _heldItem = newItem;
+        if (_heldItem != null)
+        {
+            _heldItem.Equip(this);
+            _canUse = true;
+        }
+        else
+        {
+            _canUse = false;
+        }
+    }
+
+    public void DropItem(bool selfdrop)
+    {
+        if (_heldItem == null)
+            return;
+
+        if (!_inventorySystem.DeEquip(this, selfdrop))
+            return;
+
+        _canUse = false;
+        _heldItem = null;
+    }
 
     private void Awake()
     {
@@ -29,25 +56,10 @@ public class PickupCast : MonoBehaviour
         
 
         _interectableMask = LayerMask.GetMask("Item", "Armor");
-        _inventorySystem = GetComponentInParent<NewInventorySystem>();
+        _inventorySystem = GetComponentInParent<InventorySystem>();
         _armorSystem = GetComponentInParent<ArmorSystem>();
-        Debug.Log(_armorSystem);
     }
 
-    public void SwitchItem(Item newItem)
-    {
-        _heldItem = newItem;
-        if (_heldItem != null)
-        {
-            _heldItem.Equip(gameObject);
-            _canUse = true;
-        }
-        else
-        {
-            _canUse = false;
-        }
-    }
-    
     private void CheckUse()
     {
         if (!_canUse)
@@ -68,11 +80,10 @@ public class PickupCast : MonoBehaviour
             return;
             
 
-        if (!_inventorySystem.Equip(gameObject, _itemCastHits[0].collider.GetComponent<Item>()))
+        if (!_inventorySystem.Equip(this, _itemCastHits[0].collider.GetComponent<Item>()))
             return;
 
         _canUse = true;
-        _itemCastHits[0].collider.GetComponent<Item>().Equip(gameObject);
         _heldItem = _itemCastHits[0].collider.GetComponent<Item>();
     }
 
@@ -96,26 +107,8 @@ public class PickupCast : MonoBehaviour
     {
         if (_heldItem == null)
             return;
+
         _heldItem.ModeSwitch();
-        // if (!_inventorySystem.SwitchUseMode(gameObject))
-        //     return;
-    }
-
-    public void DropItem(bool selfdrop)
-    {
-        if (_heldItem == null)
-            return;
-
-        if (!_inventorySystem.DeEquip(gameObject, selfdrop))
-            return;
-        _canUse = false;
-        _heldItem = null;
-    }
-
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(transform.position, .6f);
     }
 
     private void OnDestroy()

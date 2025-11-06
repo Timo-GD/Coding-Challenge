@@ -5,11 +5,31 @@ public class ArmorSystem : MonoBehaviour
 {
     private Dictionary<Armor, Armor> _armorPieces = new();
     private Armor[] _armorSlots;
+
+    public bool Equip(Armor armorPiece)
+    {
+        if (armorPiece == null)
+            return false;
+
+        for (int i = 0; i < _armorSlots.Length; i++)
+        {
+            if (armorPiece.GetArmorType() != _armorSlots[i].GetArmorType())
+                continue;
+
+            if (_armorPieces.ContainsKey(_armorSlots[i]))
+                continue;
+
+            armorPiece.Equip(null);
+            armorPiece.transform.SetParent(_armorSlots[i].transform, true);
+            _armorPieces.Add(_armorSlots[i], armorPiece);
+            return true;
+        }
+        return false;
+    }
+
     private void Awake()
     {
         _armorSlots = GetComponentsInChildren<Armor>();
-        for (int i = 0; i < _armorSlots.Length; i++)
-            Debug.Log(_armorSlots[i]);
     }
     private void LateUpdate()
     {
@@ -25,24 +45,5 @@ public class ArmorSystem : MonoBehaviour
         }
     }
 
-    public bool Equip(Armor armorPiece)
-    {
-        if (armorPiece == null)
-            return false;
-
-        for (int i = 0; i < _armorSlots.Length; i++)
-        {
-            if (armorPiece.GetArmorType() != _armorSlots[i].GetArmorType())
-                continue;
-
-            if (_armorPieces.ContainsKey(_armorSlots[i]))
-                continue;
-
-            armorPiece.Equip(_armorSlots[i].gameObject);
-            armorPiece.transform.SetParent(_armorSlots[i].transform, true);
-            _armorPieces.Add(_armorSlots[i], armorPiece);
-            return true;
-        }
-        return false;
-    }
+    
 }

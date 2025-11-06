@@ -3,17 +3,14 @@ using UnityEngine;
 public class Bullet : Item
 {
     private int _bulletSpeed = 50;
-    private bool _isHit;
-    
+
     public void Fire(Vector3 targetPosition)
     {
-        Rigidbody.linearVelocity = Vector3.zero;
-        Vector3 targetDirection = targetPosition - transform.position;
-        Rigidbody.AddForce(targetDirection.normalized * _bulletSpeed, ForceMode.Impulse);
-    }
+        _rigidbody.linearVelocity = Vector3.zero;
+        _rigidbody.angularVelocity = Vector3.zero;
 
-    void OnCollisionEnter(Collision collision)
-    {
-        _isHit = true;
+        Vector3 targetDirection = targetPosition - transform.position;
+        transform.rotation = Quaternion.Euler(targetDirection);
+        _rigidbody.AddForce(targetDirection.normalized * _bulletSpeed, ForceMode.Impulse);
     }
 }

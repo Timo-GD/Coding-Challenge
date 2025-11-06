@@ -4,14 +4,13 @@ using UnityEngine;
 public class PlayerRotation : MonoBehaviour
 {
     [SerializeField] private CinemachinePanTilt _camera;
+    
     private Rigidbody _rigidBody;
 
     private void Awake()
     {
         _rigidBody = GetComponentInParent<Rigidbody>();
     }
-
-
 
     private void FixedUpdate()
     {

@@ -5,11 +5,6 @@ public class AmmoClip : Item
 {
     private bool _isEmpty;
     
-    private void Reload()
-    {
-        _isEmpty = false;
-    }
-
     public override IEnumerator Using()
     {
         //TODO
@@ -19,10 +14,15 @@ public class AmmoClip : Item
             yield break;
             
         transform.parent.GetComponentInChildren<Gun>().Reload();
-        Hand.GetComponent<PickupCast>().DropItem(true);
+        _hand.DropItem(true);
         _isEmpty = true;
 
         yield return new WaitForSeconds(5f);
         Reload();
     }
+    private void Reload()
+    {
+        _isEmpty = false;
+    }
+
 }
