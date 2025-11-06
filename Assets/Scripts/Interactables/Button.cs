@@ -24,25 +24,25 @@ public class Button : InteractableObject
 
     private IEnumerator GoToPosition()
     {
-        while (transform.position.y > _targetPosition.y)
+        while (transform.position.y >= _targetPosition.y)
         {
             transform.position = Vector3.Lerp(transform.position, _targetPosition, Time.deltaTime * _moveSpeed);
             yield return null;
         }
-        yield return null;
+        Debug.Log("Cehek");
+        yield return new WaitForSeconds(2f);
+        yield return StartCoroutine(ReturnToPosition());
     }
 
-    // private IEnumerator ReturnToPosition()
-    // {
-    //     yield return new WaitForSeconds(2f);
-    //     _isPressed = false;
-    //     float elapsedTime = 0;
-    //     while (elapsedTime < _changeTime)
-    //     {
-    //         transform.position = Vector3.Lerp(transform.position, _oldPosition, elapsedTime / _changeTime);
-    //         elapsedTime += Time.deltaTime;
-    //         yield return null;
-    //     }
-    //     yield return null;
-    // }
+    private IEnumerator ReturnToPosition()
+    {
+        yield return new WaitForSeconds(2f);
+        while (transform.position.y <= _oldPosition.y)
+        {
+            transform.position = Vector3.Lerp(transform.position, _oldPosition, Time.deltaTime * _moveSpeed);
+            yield return null;
+        }
+        _isPressed = false;
+        yield return null;
+    }
 }
