@@ -1,9 +1,9 @@
 using System;
-using Items;
+using CodingChallenge.Items;
 
-namespace Armors
+namespace CodingChallenge.Armor
 {
-    public class Armor : Item
+    public class ArmorItem : Item
     {
         public virtual ArmorType GetArmorType()
         {
