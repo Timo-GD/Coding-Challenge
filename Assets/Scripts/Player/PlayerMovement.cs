@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Player
+namespace CodingChallenge.Player
 {
     public class PlayerMovement : MonoBehaviour
     {

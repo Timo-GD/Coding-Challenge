@@ -1,7 +1,7 @@
 using Unity.Cinemachine;
 using UnityEngine;
 
-namespace Player
+namespace CodingChallenge.Player
 {
     public class PlayerRotation : MonoBehaviour
     {

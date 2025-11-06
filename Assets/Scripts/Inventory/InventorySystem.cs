@@ -1,9 +1,9 @@
 using System.Collections.Generic;
-using Items;
+using CodingChallenge.Items;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Inventory
+namespace CodingChallenge.Inventory
 {
     public class InventorySystem : MonoBehaviour
     {

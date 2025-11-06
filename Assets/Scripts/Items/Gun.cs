@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Items
+namespace CodingChallenge.Items
 {
     public class Gun : Item
     {

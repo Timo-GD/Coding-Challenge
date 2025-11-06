@@ -1,14 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Armors
+namespace CodingChallenge.Armor
 {
     public class ArmorSystem : MonoBehaviour
     {
-        private Dictionary<Armor, Armor> _armorPieces = new();
-        private Armor[] _armorSlots;
+        private Dictionary<ArmorItem, ArmorItem> _armorPieces = new();
+        private ArmorItem[] _armorSlots;
 
-        public bool Equip(Armor armorPiece)
+        public bool Equip(ArmorItem armorPiece)
         {
             if (armorPiece == null)
                 return false;
@@ -31,7 +31,7 @@ namespace Armors
 
         private void Awake()
         {
-            _armorSlots = GetComponentsInChildren<Armor>();
+            _armorSlots = GetComponentsInChildren<ArmorItem>();
         }
         private void LateUpdate()
         {
@@ -40,7 +40,7 @@ namespace Armors
 
         private void UpdateArmor()
         {
-            foreach (KeyValuePair<Armor, Armor> armor in _armorPieces)
+            foreach (KeyValuePair<ArmorItem, ArmorItem> armor in _armorPieces)
             {
                 armor.Value.transform.position = armor.Key.transform.position;
                 armor.Value.transform.rotation = armor.Key.transform.rotation;

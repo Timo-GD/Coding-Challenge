@@ -1,8 +1,8 @@
 using System.Collections;
-using Inventory;
+using CodingChallenge.Inventory;
 using UnityEngine;
 
-namespace Items
+namespace CodingChallenge.Items
 {
     public class Item : MonoBehaviour
     {

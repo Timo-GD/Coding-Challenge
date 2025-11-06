@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Items
+namespace CodingChallenge.Items
 {
     public class Rock : Item
     {

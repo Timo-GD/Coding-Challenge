@@ -1,9 +1,9 @@
-using Armors;
-using Items;
+using CodingChallenge.Armor;
+using CodingChallenge.Items;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Inventory
+namespace CodingChallenge.Inventory
 {
     public class Hand : MonoBehaviour
     {
@@ -72,7 +72,7 @@ namespace Inventory
             if (Physics.SphereCastNonAlloc(transform.position, .6f, transform.forward, _itemCastHits, 0, _interectableMask) == 0)
                 return;
 
-            if (_armorSystem.Equip(_itemCastHits[0].collider.GetComponent<Armor>()))
+            if (_armorSystem.Equip(_itemCastHits[0].collider.GetComponent<ArmorItem>()))
                 return;
 
             if (_heldItem != null)
