@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 945860705087856501}
   - component: {fileID: 1077812089034366521}
   - component: {fileID: 7085911514300003698}
-  - component: {fileID: 1739001742057757685}
+  - component: {fileID: 1988720511091291237}
   m_Layer: 6
   m_Name: TopHat
   m_TagString: Head
@@ -85,7 +85,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1739001742057757685
+--- !u!114 &1988720511091291237
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,7 +94,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2209784167091325687}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9090d122fd1a6b148ab88d620ae1744d, type: 3}
+  m_Script: {fileID: 11500000, guid: a07b15b7c016b9e4f843f1594aac75b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4040082415013297112

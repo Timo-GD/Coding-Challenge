@@ -1,39 +1,42 @@
 using System.Collections;
 using UnityEngine;
 
-public class Rock : Item
+namespace CodingChallenge.Items
 {
-    private bool _isHeld;
-    private int _throwForce;
-    private int _maxThrowForce = 10;
-    private int _minThrowForce = 5;
-    
-    private void FixedUpdate()
+    public class Rock : Item
     {
-        if (Rigidbody.useGravity)
-            Rigidbody.AddForce(Physics.gravity * Rigidbody.mass);
-            
-    }
+        private bool _isHeld;
+        private int _throwForce;
+        private int _maxThrowForce = 10;
+        private int _minThrowForce = 5;
 
-    public override IEnumerator Using()
-    {
-        _isHeld = true;
-        while(_isHeld)
+        public override IEnumerator Using()
         {
-            _throwForce++;
-            _throwForce = Mathf.Clamp(_throwForce, _minThrowForce, _maxThrowForce);
-            yield return new WaitForSeconds(.5f);
+            _isHeld = true;
+            while (_isHeld)
+            {
+                _throwForce++;
+                _throwForce = Mathf.Clamp(_throwForce, _minThrowForce, _maxThrowForce);
+                yield return new WaitForSeconds(.5f);
+            }
+        }
+
+        public override void StopUsing()
+        {
+            if (!_isHeld)
+                return;
+
+            _isHeld = false;
+            _rigidbody.AddForce(transform.parent.forward * _throwForce, ForceMode.Impulse);
+            _hand.DropItem(true);
+            _throwForce = 4;
+        }
+
+        private void FixedUpdate()
+        {
+            if (_rigidbody.useGravity)
+                _rigidbody.AddForce(Physics.gravity * _rigidbody.mass);
+
         }
     }
-
-    public override void StopUsing()
-    {
-        if (!_isHeld)
-            return;
-        _isHeld = false;
-        Rigidbody.AddForce(transform.parent.forward * _throwForce, ForceMode.Impulse);
-        GetComponentInParent<InverntorySystem>().DeEquip(transform);
-        _throwForce = 4;
-    }
-    
 }

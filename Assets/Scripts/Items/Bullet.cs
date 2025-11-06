@@ -1,19 +1,19 @@
 using UnityEngine;
 
-public class Bullet : Item
+namespace CodingChallenge.Items
 {
-    private int _bulletSpeed = 50;
-    private bool _isHit;
-    
-    public void Fire(Vector3 targetPosition)
+    public class Bullet : Item
     {
-        Rigidbody.linearVelocity = Vector3.zero;
-        Vector3 targetDirection = targetPosition - transform.position;
-        Rigidbody.AddForce(targetDirection.normalized * _bulletSpeed, ForceMode.Impulse);
-    }
+        private int _bulletSpeed = 50;
 
-    void OnCollisionEnter(Collision collision)
-    {
-        _isHit = true;
+        public void Fire(Vector3 targetPosition)
+        {
+            _rigidbody.linearVelocity = Vector3.zero;
+            _rigidbody.angularVelocity = Vector3.zero;
+
+            Vector3 targetDirection = targetPosition - transform.position;
+            transform.rotation = Quaternion.Euler(targetDirection);
+            _rigidbody.AddForce(targetDirection.normalized * _bulletSpeed, ForceMode.Impulse);
+        }
     }
 }
