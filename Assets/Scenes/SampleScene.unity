@@ -119,23 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &159981482 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2209784167091325687, guid: 40dee01eaf0926146ad9f5535a445a39, type: 3}
-  m_PrefabInstance: {fileID: 5194340947579425527}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &159981487
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 159981482}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a07b15b7c016b9e4f843f1594aac75b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &186369252
 GameObject:
   m_ObjectHideFlags: 0
@@ -522,11 +505,6 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   CustomBlends: {fileID: 0}
---- !u!4 &396003151 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5018571959370342520, guid: 1dc6e732dd418cf4eab25d95e52a4c10, type: 3}
-  m_PrefabInstance: {fileID: 6382252128226234002}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -2467,41 +2445,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 122808598318373390, guid: ae7a4639292b23d45a9b678f1ef8fd08, type: 3}
-      propertyPath: m_Size.y
-      value: 1.6634154
-      objectReference: {fileID: 0}
-    - target: {fileID: 122808598318373390, guid: ae7a4639292b23d45a9b678f1ef8fd08, type: 3}
-      propertyPath: m_Size.z
-      value: 0.96510124
-      objectReference: {fileID: 0}
-    - target: {fileID: 122808598318373390, guid: ae7a4639292b23d45a9b678f1ef8fd08, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 122808598318373390, guid: ae7a4639292b23d45a9b678f1ef8fd08, type: 3}
-      propertyPath: m_Center.y
-      value: -0.063848495
-      objectReference: {fileID: 0}
-    - target: {fileID: 122808598318373390, guid: ae7a4639292b23d45a9b678f1ef8fd08, type: 3}
-      propertyPath: m_Center.z
-      value: 0.079690985
-      objectReference: {fileID: 0}
-    - target: {fileID: 122808598318373390, guid: ae7a4639292b23d45a9b678f1ef8fd08, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3157017079957225255, guid: ae7a4639292b23d45a9b678f1ef8fd08, type: 3}
       propertyPath: m_Name
       value: Flashlight
-      objectReference: {fileID: 0}
-    - target: {fileID: 5909947574045903473, guid: ae7a4639292b23d45a9b678f1ef8fd08, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5968919767293758788, guid: ae7a4639292b23d45a9b678f1ef8fd08, type: 3}
-      propertyPath: m_Layer
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8732906640153863852, guid: ae7a4639292b23d45a9b678f1ef8fd08, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2657,14 +2603,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TopHat
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1739001742057757685, guid: 40dee01eaf0926146ad9f5535a445a39, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2209784167091325687, guid: 40dee01eaf0926146ad9f5535a445a39, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 159981487}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40dee01eaf0926146ad9f5535a445a39, type: 3}
 --- !u!1001 &6382252128226234002
 PrefabInstance:
@@ -2674,18 +2616,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1282383612801286481, guid: 1dc6e732dd418cf4eab25d95e52a4c10, type: 3}
-      propertyPath: _rayCastPoint
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1282383612801286481, guid: 1dc6e732dd418cf4eab25d95e52a4c10, type: 3}
-      propertyPath: _bulletExitPoint
-      value: 
-      objectReference: {fileID: 396003151}
-    - target: {fileID: 1282383612801286481, guid: 1dc6e732dd418cf4eab25d95e52a4c10, type: 3}
-      propertyPath: _bulletGameObject
-      value: 
-      objectReference: {fileID: 4309659388920294121, guid: 8ba14b320735720468953b6ee6b042b4, type: 3}
     - target: {fileID: 1565534839394372135, guid: 1dc6e732dd418cf4eab25d95e52a4c10, type: 3}
       propertyPath: m_Name
       value: Gun
