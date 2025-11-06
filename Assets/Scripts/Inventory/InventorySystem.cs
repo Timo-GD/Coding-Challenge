@@ -9,11 +9,11 @@ namespace Inventory
     {
         [SerializeField] private InputAction _switchItem;
 
-        private Dictionary<PickupCast, Item> _inventoryItems = new();
-        private PickupCast[] _hands;
+        private Dictionary<Hand, Item> _inventoryItems = new();
+        private Hand[] _hands;
         private bool _isAlreadyDropped;
 
-        public bool Equip(PickupCast hand, Item equipable)
+        public bool Equip(Hand hand, Item equipable)
         {
             if (_inventoryItems.ContainsKey(hand))
                 return false;
@@ -25,7 +25,7 @@ namespace Inventory
             return true;
         }
 
-        public bool DeEquip(PickupCast hand, bool selfdrop)
+        public bool DeEquip(Hand hand, bool selfdrop)
         {
             if (_isAlreadyDropped)
             {
@@ -46,7 +46,7 @@ namespace Inventory
         private void Awake()
         {
             _switchItem.performed += context => SwitchItems();
-            _hands = GetComponentsInChildren<PickupCast>();
+            _hands = GetComponentsInChildren<Hand>();
         }
 
         private void LateUpdate()
@@ -57,7 +57,7 @@ namespace Inventory
 
         private void UpdateHands()
         {
-            foreach (KeyValuePair<PickupCast, Item> handAndItem in _inventoryItems)
+            foreach (KeyValuePair<Hand, Item> handAndItem in _inventoryItems)
             {
                 handAndItem.Value.transform.position = handAndItem.Key.transform.position;
                 handAndItem.Value.transform.rotation = handAndItem.Key.transform.rotation;

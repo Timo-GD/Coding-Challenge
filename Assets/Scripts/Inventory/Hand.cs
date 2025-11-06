@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 namespace Inventory
 {
-    public class PickupCast : MonoBehaviour
+    public class Hand : MonoBehaviour
     {
         public Item HeldItem => _heldItem;
 

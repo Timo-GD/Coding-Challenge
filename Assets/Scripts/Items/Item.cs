@@ -8,7 +8,7 @@ namespace Items
     {
         protected Rigidbody _rigidbody;
         protected Collider[] _colliders;
-        protected PickupCast _hand;
+        protected Hand _hand;
         protected bool _isSecondaryMode;
 
         public virtual void Awake()
@@ -31,7 +31,7 @@ namespace Items
             _isSecondaryMode = _isSecondaryMode ? false : true;
         }
 
-        public virtual void Equip(PickupCast hand)
+        public virtual void Equip(Hand hand)
         {
             _hand = hand;
 
@@ -48,7 +48,7 @@ namespace Items
             _hand = null;
 
             _rigidbody.useGravity = true;
-            
+
             foreach (Collider collider in _colliders)
                 collider.enabled = true;
         }
