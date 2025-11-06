@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ArmorSystem : MonoBehaviour
 {
-    private Dictionary<ArmorType, Item> _armorPieces;
+    private Dictionary<ArmorType, Armor> _armorPieces;
     private void Awake()
     {
         
@@ -12,9 +12,13 @@ public class ArmorSystem : MonoBehaviour
     {
         
     }
-    public bool Equip(Item armorPiece)
+    public bool Equip(Armor armorPiece)
     {
-        // _armorPieces.ContainsKey((ArmorType)armorPiece.ArmorType);
-        return false;
+        if (!_armorPieces.ContainsKey(armorPiece.GetArmorType()))
+            return false;
+
+        _armorPieces.Add(armorPiece.GetArmorType(), armorPiece);
+        armorPiece.transform.SetParent(null);
+        return true;
     }
 }
