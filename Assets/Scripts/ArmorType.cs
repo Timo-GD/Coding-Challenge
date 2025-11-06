@@ -1,4 +1,4 @@
-enum ArmorType
+public enum ArmorType
 {
     Head,
     chest,
