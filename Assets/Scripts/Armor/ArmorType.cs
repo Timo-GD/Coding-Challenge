@@ -1,7 +1,10 @@
-public enum ArmorType
+namespace Armors
 {
-    Head,
-    Chest,
-    Legs,
-    Feet
+    public enum ArmorType
+    {
+        Head,
+        Chest,
+        Legs,
+        Feet
+    }
 }

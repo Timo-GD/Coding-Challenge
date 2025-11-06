@@ -1,19 +1,22 @@
 using System.Collections;
 using UnityEngine;
 
-public class Flashlight : Item
+namespace Items
 {
-    private Light _light;
+    public class Flashlight : Item
+    {
+        private Light _light;
 
-    public override void Awake()
-    {
-        base.Awake();
-        _light = GetComponentInChildren<Light>();
-    }
-    
-    public override IEnumerator Using()
-    {
-        _light.enabled = _light.enabled ? false : true;
-        yield break;
+        public override void Awake()
+        {
+            base.Awake();
+            _light = GetComponentInChildren<Light>();
+        }
+
+        public override IEnumerator Using()
+        {
+            _light.enabled = _light.enabled ? false : true;
+            yield break;
+        }
     }
 }

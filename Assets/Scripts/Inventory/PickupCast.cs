@@ -1,135 +1,138 @@
 using System;
+using Armors;
+using Items;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PickupCast : MonoBehaviour
+namespace Inventory
 {
-    public Item HeldItem => _heldItem;
-
-    [SerializeField] private InputAction _pickup;
-    [SerializeField] private InputAction _drop;
-    [SerializeField] private InputAction _switchUseMode;
-
-    private RaycastHit[] _itemCastHits = new RaycastHit[1];
-    private Item _heldItem;
-    private InventorySystem _inventorySystem;
-    private ArmorSystem _armorSystem;
-    private LayerMask _interectableMask;
-    private bool _canUse;
-
-    public void SwitchItem(Item newItem)
+    public class PickupCast : MonoBehaviour
     {
-        _heldItem = newItem;
-        if (_heldItem != null)
+        public Item HeldItem => _heldItem;
+
+        [SerializeField] private InputAction _pickup;
+        [SerializeField] private InputAction _drop;
+        [SerializeField] private InputAction _switchUseMode;
+
+        private RaycastHit[] _itemCastHits = new RaycastHit[1];
+        private Item _heldItem;
+        private InventorySystem _inventorySystem;
+        private ArmorSystem _armorSystem;
+        private LayerMask _interectableMask;
+        private bool _canUse;
+
+        public void SwitchItem(Item newItem)
         {
-            _heldItem.Equip(this);
-            _canUse = true;
+            _heldItem = newItem;
+            if (_heldItem != null)
+            {
+                _heldItem.Equip(this);
+                _canUse = true;
+            }
+            else
+            {
+                _canUse = false;
+            }
         }
-        else
+
+        public void DropItem(bool selfdrop)
         {
+            if (_heldItem == null)
+                return;
+
+            if (!_inventorySystem.DeEquip(this, selfdrop))
+                return;
+
             _canUse = false;
+            _heldItem = null;
         }
-    }
 
-    public void DropItem(bool selfdrop)
-    {
-        if (_heldItem == null)
-            return;
+        private void Awake()
+        {
 
-        if (!_inventorySystem.DeEquip(this, selfdrop))
-            return;
-
-        _canUse = false;
-        _heldItem = null;
-    }
-
-    private void Awake()
-    {
-        
-        _pickup.performed += context => CheckUse();
-        _pickup.canceled += context => StopUse();
-        _drop.performed += context => DropItem(false);
-        _switchUseMode.performed += context => SwitchUseMode();
-        
-        
-
-        _interectableMask = LayerMask.GetMask("Item", "Armor");
-        _inventorySystem = GetComponentInParent<InventorySystem>();
-        _armorSystem = GetComponentInParent<ArmorSystem>();
-    }
-
-    private void CheckUse()
-    {
-        if (!_canUse)
-            TryPickUp();
-        else
-            Use();
-    }
-
-    private void TryPickUp()
-    {
-        if (Physics.SphereCastNonAlloc(transform.position, .6f, transform.forward, _itemCastHits, 0, _interectableMask) == 0)
-            return;
-
-        if (_armorSystem.Equip(_itemCastHits[0].collider.GetComponent<Armor>()))
-            return;
-
-        if (_heldItem != null)
-            return;
+            _pickup.performed += context => CheckUse();
+            _pickup.canceled += context => StopUse();
+            _drop.performed += context => DropItem(false);
+            _switchUseMode.performed += context => SwitchUseMode();
             
+            _interectableMask = LayerMask.GetMask("Item", "Armor");
+            _inventorySystem = GetComponentInParent<InventorySystem>();
+            _armorSystem = GetComponentInParent<ArmorSystem>();
+        }
 
-        if (!_inventorySystem.Equip(this, _itemCastHits[0].collider.GetComponent<Item>()))
-            return;
+        private void CheckUse()
+        {
+            if (!_canUse)
+                TryPickUp();
+            else
+                Use();
+        }
 
-        _canUse = true;
-        _heldItem = _itemCastHits[0].collider.GetComponent<Item>();
-    }
+        private void TryPickUp()
+        {
+            if (Physics.SphereCastNonAlloc(transform.position, .6f, transform.forward, _itemCastHits, 0, _interectableMask) == 0)
+                return;
 
-    private void Use()
-    {
-        if (_heldItem == null)
-            return;
+            if (_armorSystem.Equip(_itemCastHits[0].collider.GetComponent<Armor>()))
+                return;
 
-        StartCoroutine(_heldItem.Using());
-    }
+            if (_heldItem != null)
+                return;
 
-    private void StopUse()
-    {
-        if (_heldItem == null)
-            return;
 
-        _heldItem.StopUsing();
-    }
+            if (!_inventorySystem.Equip(this, _itemCastHits[0].collider.GetComponent<Item>()))
+                return;
 
-    private void SwitchUseMode()
-    {
-        if (_heldItem == null)
-            return;
+            _canUse = true;
+            _heldItem = _itemCastHits[0].collider.GetComponent<Item>();
+        }
 
-        _heldItem.ModeSwitch();
-    }
+        private void Use()
+        {
+            if (_heldItem == null)
+                return;
 
-    private void OnDestroy()
-    {
-        _pickup.performed -= context => CheckUse();
-        _pickup.canceled -= context => StopUse();
-        _drop.performed -= context => DropItem(false);
-        _switchUseMode.performed -= context => SwitchUseMode();
-    }
+            StartCoroutine(_heldItem.Using());
+        }
 
-    private void OnEnable()
-    {
-        _pickup.Enable();
-        _drop.Enable();
-        _switchUseMode.Enable();
-    }
+        private void StopUse()
+        {
+            if (_heldItem == null)
+                return;
 
-    private void OnDisable()
-    {
-        _pickup.Disable();
-        _drop.Disable();
-        _switchUseMode.Disable();
+            _heldItem.StopUsing();
+        }
+
+        private void SwitchUseMode()
+        {
+            if (_heldItem == null)
+                return;
+
+            _heldItem.ModeSwitch();
+        }
+
+        private void OnDestroy()
+        {
+            _pickup.performed -= context => CheckUse();
+            _pickup.canceled -= context => StopUse();
+            _drop.performed -= context => DropItem(false);
+            _switchUseMode.performed -= context => SwitchUseMode();
+        }
+
+        private void OnEnable()
+        {
+            _pickup.Enable();
+            _drop.Enable();
+            _switchUseMode.Enable();
+        }
+
+        private void OnDisable()
+        {
+            _pickup.Disable();
+            _drop.Disable();
+            _switchUseMode.Disable();
+        }
     }
 }

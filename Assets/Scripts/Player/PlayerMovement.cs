@@ -2,73 +2,76 @@ using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.InputSystem;
 
-public class PlayerMovement : MonoBehaviour
+namespace Player
 {
-    [SerializeField] private InputAction _move;
-    [SerializeField] private InputAction _jump;
-    [SerializeField] private float _speed;
-    [SerializeField] private float _jumpforce;
-
-    private Rigidbody _rigidbody;
-    private bool _isGrounded;
-
-    private void Awake()
+    public class PlayerMovement : MonoBehaviour
     {
-        _rigidbody = GetComponent<Rigidbody>();
-        _jump.performed += context => VerticalMovement();
-    }
+        [SerializeField] private InputAction _move;
+        [SerializeField] private InputAction _jump;
+        [SerializeField] private float _speed;
+        [SerializeField] private float _jumpforce;
 
-    private void FixedUpdate()
-    {
-        HorizontalMovement();
-    }
+        private Rigidbody _rigidbody;
+        private bool _isGrounded;
 
-    private void HorizontalMovement()
-    {
+        private void Awake()
+        {
+            _rigidbody = GetComponent<Rigidbody>();
+            _jump.performed += context => VerticalMovement();
+        }
 
-        Vector3 horizontalVelocity = Vector3.zero;
+        private void FixedUpdate()
+        {
+            HorizontalMovement();
+        }
 
-        horizontalVelocity = transform.forward * _move.ReadValue<Vector2>().y + transform.right * _move.ReadValue<Vector2>().x;
+        private void HorizontalMovement()
+        {
 
-        horizontalVelocity.Normalize();
-        horizontalVelocity *= _speed;
+            Vector3 horizontalVelocity = Vector3.zero;
 
-        _rigidbody.linearVelocity = new Vector3(horizontalVelocity.x, _rigidbody.linearVelocity.y, horizontalVelocity.z);
-    }
+            horizontalVelocity = transform.forward * _move.ReadValue<Vector2>().y + transform.right * _move.ReadValue<Vector2>().x;
 
-    private void VerticalMovement()
-    {
-        if (!_isGrounded)
-            return;
-            
-        _rigidbody.AddForce(Vector3.up * _jumpforce, ForceMode.Impulse);
-        _isGrounded = false;
-    }
+            horizontalVelocity.Normalize();
+            horizontalVelocity *= _speed;
 
-    private void OnTriggerStay(Collider other)
-    {
-        _isGrounded = true;
-    }
+            _rigidbody.linearVelocity = new Vector3(horizontalVelocity.x, _rigidbody.linearVelocity.y, horizontalVelocity.z);
+        }
 
-    private void OnTriggerExit(Collider other)
-    {
-        _isGrounded = false;
-    }
+        private void VerticalMovement()
+        {
+            if (!_isGrounded)
+                return;
 
-    private void OnDestroy()
-    {
-        _jump.performed -= context => VerticalMovement();
-    }
+            _rigidbody.AddForce(Vector3.up * _jumpforce, ForceMode.Impulse);
+            _isGrounded = false;
+        }
 
-    private void OnEnable()
-    {
-        _move.Enable();
-        _jump.Enable();
-    }
+        private void OnTriggerStay(Collider other)
+        {
+            _isGrounded = true;
+        }
 
-    private void ODisable()
-    {
-        _move.Disable();
-        _jump.Disable();
+        private void OnTriggerExit(Collider other)
+        {
+            _isGrounded = false;
+        }
+
+        private void OnDestroy()
+        {
+            _jump.performed -= context => VerticalMovement();
+        }
+
+        private void OnEnable()
+        {
+            _move.Enable();
+            _jump.Enable();
+        }
+
+        private void ODisable()
+        {
+            _move.Disable();
+            _jump.Disable();
+        }
     }
 }

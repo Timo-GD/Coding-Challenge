@@ -1,28 +1,28 @@
 using System.Collections;
 using UnityEngine;
 
-public class AmmoClip : Item
+namespace Items
 {
-    private bool _isEmpty;
-    
-    public override IEnumerator Using()
+    public class AmmoClip : Item
     {
-        //TODO
-        //Make this prettier if possible;
+        private bool _isEmpty;
 
-        if (transform.parent.GetComponentInChildren<Gun>() == null || _isEmpty)
-            yield break;
-            
-        transform.parent.GetComponentInChildren<Gun>().Reload();
-        _hand.DropItem(true);
-        _isEmpty = true;
+        public override IEnumerator Using()
+        {
+            if (transform.parent.GetComponentInChildren<Gun>() == null || _isEmpty)
+                yield break;
 
-        yield return new WaitForSeconds(5f);
-        Reload();
+            transform.parent.GetComponentInChildren<Gun>().Reload();
+            _hand.DropItem(true);
+            _isEmpty = true;
+
+            yield return new WaitForSeconds(5f);
+            Reload();
+        }
+        private void Reload()
+        {
+            _isEmpty = false;
+        }
+
     }
-    private void Reload()
-    {
-        _isEmpty = false;
-    }
-
 }

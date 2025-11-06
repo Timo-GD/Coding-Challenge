@@ -1,10 +1,13 @@
 using System;
-using UnityEngine;
+using Items;
 
-public class Armor : Item
+namespace Armors
 {
-    public virtual ArmorType GetArmorType()
+    public class Armor : Item
     {
-        return (ArmorType)Enum.Parse(typeof(ArmorType), tag);
+        public virtual ArmorType GetArmorType()
+        {
+            return (ArmorType)Enum.Parse(typeof(ArmorType), tag);
+        }
     }
 }

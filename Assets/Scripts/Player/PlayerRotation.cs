@@ -1,29 +1,32 @@
 using Unity.Cinemachine;
 using UnityEngine;
 
-public class PlayerRotation : MonoBehaviour
+namespace Player
 {
-    [SerializeField] private CinemachinePanTilt _camera;
-    
-    private Rigidbody _rigidBody;
-
-    private void Awake()
+    public class PlayerRotation : MonoBehaviour
     {
-        _rigidBody = GetComponentInParent<Rigidbody>();
-    }
+        [SerializeField] private CinemachinePanTilt _camera;
 
-    private void FixedUpdate()
-    {
-        Rotation();
-    }
+        private Rigidbody _rigidBody;
 
-    private void Rotation()
-    {
-        float pannAxis = _camera.PanAxis.Value;
-        float tiltAxis = _camera.TiltAxis.Value;
+        private void Awake()
+        {
+            _rigidBody = GetComponentInParent<Rigidbody>();
+        }
 
-        transform.rotation = Quaternion.Euler(new Vector3(tiltAxis, pannAxis, 0));
-        
-        _rigidBody.MoveRotation(Quaternion.Euler(new Vector3(0, pannAxis, 0)));
+        private void FixedUpdate()
+        {
+            Rotation();
+        }
+
+        private void Rotation()
+        {
+            float pannAxis = _camera.PanAxis.Value;
+            float tiltAxis = _camera.TiltAxis.Value;
+
+            transform.rotation = Quaternion.Euler(new Vector3(tiltAxis, pannAxis, 0));
+
+            _rigidBody.MoveRotation(Quaternion.Euler(new Vector3(0, pannAxis, 0)));
+        }
     }
 }
