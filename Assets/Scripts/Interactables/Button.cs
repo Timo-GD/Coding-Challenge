@@ -6,12 +6,17 @@ public class Button : InteractableObject
 {
     private Vector3 _oldPosition;
     private Vector3 _targetPosition;
+    private Color _color;
     private float _moveSpeed = 5f;
     private bool _isPressed;
 
-    public delegate bool PressSate(bool isPressed);
-    public event PressSate OnPressStateChange;
+    public delegate void Pressed(Color buttonColor);
+    public event Pressed OnPress;
 
+    private void Awake()
+    {
+        _color = GetComponent<Renderer>().material.color;
+    }
     public override bool Use()
     {
         if (_isPressed)
@@ -23,7 +28,7 @@ public class Button : InteractableObject
         _targetPosition.y -= 0.15f;
 
         _isPressed = true;
-        OnPressStateChange?.Invoke(_isPressed);
+        OnPress?.Invoke(_color);
         StartCoroutine(GoToPosition());
         return true;
     }
@@ -35,6 +40,7 @@ public class Button : InteractableObject
             transform.position = Vector3.Lerp(transform.position, _targetPosition, Time.deltaTime * _moveSpeed);
             yield return null;
         }
+
         yield return new WaitForSeconds(2f);
         yield return StartCoroutine(ReturnToPosition());
     }
@@ -46,8 +52,8 @@ public class Button : InteractableObject
             transform.position = Vector3.Lerp(transform.position, _oldPosition, Time.deltaTime * _moveSpeed);
             yield return null;
         }
+        
         _isPressed = false;
-        OnPressStateChange?.Invoke(_isPressed);
         yield return null;
     }
 }
