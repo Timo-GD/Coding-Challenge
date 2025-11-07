@@ -1,7 +1,6 @@
 using System.Collections;
 using CodingChallenge.Interactable;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class Button : InteractableObject
 {
@@ -15,7 +14,9 @@ public class Button : InteractableObject
             return false;
 
         _oldPosition = transform.position;
-        _targetPosition = Vector3.zero;
+
+        _targetPosition = transform.position;
+        _targetPosition.y -= 0.15f;
 
         _isPressed = true;
         StartCoroutine(GoToPosition());
@@ -24,20 +25,18 @@ public class Button : InteractableObject
 
     private IEnumerator GoToPosition()
     {
-        while (transform.position.y >= _targetPosition.y)
+        while (Vector3.Distance(transform.position, _targetPosition) > 0.05f)
         {
             transform.position = Vector3.Lerp(transform.position, _targetPosition, Time.deltaTime * _moveSpeed);
             yield return null;
         }
-        Debug.Log("Cehek");
         yield return new WaitForSeconds(2f);
         yield return StartCoroutine(ReturnToPosition());
     }
 
     private IEnumerator ReturnToPosition()
     {
-        yield return new WaitForSeconds(2f);
-        while (transform.position.y <= _oldPosition.y)
+        while (Vector3.Distance(transform.position, _oldPosition) > 0.0005f)
         {
             transform.position = Vector3.Lerp(transform.position, _oldPosition, Time.deltaTime * _moveSpeed);
             yield return null;
