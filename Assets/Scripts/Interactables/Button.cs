@@ -36,24 +36,26 @@ namespace CodingChallenge.Interactable
 
         private IEnumerator GoToPosition()
         {
-            while (Vector3.Distance(transform.position, _targetPosition) > 0.05f)
+            while (Vector3.Distance(transform.position, _targetPosition) > 0.5f)
             {
                 transform.position = Vector3.Lerp(transform.position, _targetPosition, Time.deltaTime * _moveSpeed);
                 yield return null;
             }
 
+            transform.position = _targetPosition;
             yield return new WaitForSeconds(2f);
             yield return StartCoroutine(ReturnToPosition());
         }
 
         private IEnumerator ReturnToPosition()
         {
-            while (Vector3.Distance(transform.position, _oldPosition) > 0.0005f)
+            while (Vector3.Distance(transform.position, _oldPosition) > 0.5f)
             {
                 transform.position = Vector3.Lerp(transform.position, _oldPosition, Time.deltaTime * _moveSpeed);
                 yield return null;
             }
 
+            transform.position = _oldPosition;
             _isPressed = false;
             yield return null;
         }

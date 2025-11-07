@@ -33,12 +33,14 @@ namespace CodingChallenge.Interactable
 
         private IEnumerator OpenDoor(Quaternion targetRotation, Vector3 targetPosition)
         {
-            while (Vector3.Distance(transform.rotation.eulerAngles, targetRotation.eulerAngles) > 0.0005f)
+            while (Vector3.Distance(transform.rotation.eulerAngles, targetRotation.eulerAngles) > 0.5f)
             {
                 transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * _openSpeed);
                 transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * _openSpeed);
                 yield return null;
             }
+            transform.position = targetPosition;
+            transform.rotation = targetRotation;
             _isClosed = true;
             _isUsed = false;
             yield return null;
@@ -46,12 +48,14 @@ namespace CodingChallenge.Interactable
         
         private IEnumerator CloseDoor(Quaternion targetRotation, Vector3 targetPosition)
         {
-            while (Vector3.Distance(transform.rotation.eulerAngles, targetRotation.eulerAngles) > 0.0005f)
+            while (Vector3.Distance(transform.rotation.eulerAngles, targetRotation.eulerAngles) > 0.5f)
             {
                 transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * _openSpeed);
                 transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * _openSpeed);
                 yield return null;
             }
+            transform.position = targetPosition;
+            transform.rotation = targetRotation;
             _isClosed = false;
             _isUsed = false;
             yield return null;
