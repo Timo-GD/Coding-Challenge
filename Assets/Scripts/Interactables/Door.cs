@@ -18,22 +18,25 @@ namespace CodingChallenge.Interactable
             if (!_isClosed)
             {
                 Quaternion targetRotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y - 90, transform.rotation.z);
-                StartCoroutine(OpenDoor(targetRotation));
+                Vector3 targetPosition = new Vector3(transform.position.x * 0.906f, transform.position.y, transform.position.z * 1.375f);
+                StartCoroutine(OpenDoor(targetRotation, targetPosition));
             }
             else
             {
-                Quaternion targetRotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z);
-                StartCoroutine(CloseDoor(targetRotation));
+                Quaternion targetRotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y + 90, transform.rotation.z);
+                Vector3 targetPosition = new Vector3(transform.position.x * 1.103f, transform.position.y, transform.position.z * 0.727f);
+                StartCoroutine(CloseDoor(targetRotation, targetPosition));
             }
 
             return base.Use();
         }
 
-        private IEnumerator OpenDoor(Quaternion targetRotation)
+        private IEnumerator OpenDoor(Quaternion targetRotation, Vector3 targetPosition)
         {
             while (Vector3.Distance(transform.rotation.eulerAngles, targetRotation.eulerAngles) > 0.0005f)
             {
                 transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * _openSpeed);
+                transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * _openSpeed);
                 yield return null;
             }
             _isClosed = true;
@@ -41,11 +44,12 @@ namespace CodingChallenge.Interactable
             yield return null;
         }
         
-        private IEnumerator CloseDoor(Quaternion targetRotation)
+        private IEnumerator CloseDoor(Quaternion targetRotation, Vector3 targetPosition)
         {
             while (Vector3.Distance(transform.rotation.eulerAngles, targetRotation.eulerAngles) > 0.0005f)
             {
                 transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * _openSpeed);
+                transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * _openSpeed);
                 yield return null;
             }
             _isClosed = false;
