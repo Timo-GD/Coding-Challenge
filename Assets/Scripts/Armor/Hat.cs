@@ -8,7 +8,8 @@ namespace CodingChallenge.Armor
     {
         public override void Equip(Hand hand)
         {
-            transform.localScale = new Vector3(1.5f, .25f, 1.5f);
+            if(hand == null)
+                transform.localScale = new Vector3(1.5f, .25f, 1.5f);
             base.Equip(hand);
         }
 
