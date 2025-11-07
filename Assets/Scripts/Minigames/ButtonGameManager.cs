@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ButtonGameManager : MonoBehaviour
@@ -9,23 +10,35 @@ public class ButtonGameManager : MonoBehaviour
     [SerializeField] private Button _yellowButton;
 
     private Renderer[] _answerColors;
-    private Stack _colorCombination;
+    private int _index = 0;
 
     private void Awake()
     {
-        _redButton.OnPressStateChange += (isPressed) => UpdateCode(isPressed, Color.red);
-        _greenButton.OnPressStateChange += (isPressed) => UpdateCode(isPressed, Color.red);
-        _blueButton.OnPressStateChange += (isPressed) => UpdateCode(isPressed, Color.red);
-        _yellowButton.OnPressStateChange += (isPressed) => UpdateCode(isPressed, Color.red);
+        _answerColors = GetComponentsInChildren<Renderer>();
+
+        _redButton.OnPress += (buttonColor) => UpdateCode(buttonColor);
+        _greenButton.OnPress += (buttonColor) => UpdateCode(buttonColor);
+        _blueButton.OnPress += (buttonColor) => UpdateCode(buttonColor);
+        _yellowButton.OnPress += (buttonColor) => UpdateCode(buttonColor);
     }
 
-    private bool UpdateCode(bool buttonState, Color buttonColor)
+    private void UpdateCode(Color buttonColor)
     {
-        if (_colorCombination.Count > 4)
-            return false;
+        if (_index > 3)
+        {
+            ResetCode();
+            return;
+        }
 
-        Debug.Log(buttonState);
-        return false;   
+        _answerColors[_index].material.color = buttonColor;
+        _index++;
+    }
+    
+    private void ResetCode()
+    {
+        _index = 0;
+        for (int i = 0; i < _answerColors.Length; i++)
+            _answerColors[i].material.color = Color.gray;
     }
 
 }
