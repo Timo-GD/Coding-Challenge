@@ -8,6 +8,10 @@ public class Button : InteractableObject
     private Vector3 _targetPosition;
     private float _moveSpeed = 5f;
     private bool _isPressed;
+
+    public delegate bool PressSate(bool isPressed);
+    public event PressSate OnPressStateChange;
+
     public override bool Use()
     {
         if (_isPressed)
@@ -19,6 +23,7 @@ public class Button : InteractableObject
         _targetPosition.y -= 0.15f;
 
         _isPressed = true;
+        OnPressStateChange?.Invoke(_isPressed);
         StartCoroutine(GoToPosition());
         return true;
     }
@@ -42,6 +47,7 @@ public class Button : InteractableObject
             yield return null;
         }
         _isPressed = false;
+        OnPressStateChange?.Invoke(_isPressed);
         yield return null;
     }
 }
