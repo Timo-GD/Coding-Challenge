@@ -11,17 +11,18 @@ public class ButtonGameManager : MonoBehaviour
     [SerializeField] private Button _yellowButton;
 
     private Renderer[] _pressedColors;
-    private Color[] _answerColors = { Color.gray, Color.gray, Color.gray, Color.gray };
+    private Color[] _answerColors;
     private int _index = 0;
+    private int _isCorrect = 0;
 
     private void Awake()
     {
         _pressedColors = GetComponentsInChildren<Renderer>();
-        for (int i = 0; i < _pressedColors.Length; i++)
-        {
-            _answerColors[i] = _pressedColors[i].material.color;
-            _pressedColors[i].material.color = Color.gray;
-        }
+        _answerColors = new Color[]
+        { _blueButton.GetComponent<Renderer>().material.color,
+        _greenButton.GetComponent<Renderer>().material.color,
+        _yellowButton.GetComponent<Renderer>().material.color,
+        _redButton.GetComponent<Renderer>().material.color };
 
         _redButton.OnPress += (buttonColor) => UpdateCode(buttonColor);
         _greenButton.OnPress += (buttonColor) => UpdateCode(buttonColor);
@@ -38,35 +39,24 @@ public class ButtonGameManager : MonoBehaviour
         }
 
         _pressedColors[_index].material.color = buttonColor;
+        CheckPassword();
         _index++;
-        if(_index > 3)
-            CheckPassword();
     }
 
     private void ResetCode()
     {
         _index = 0;
+        _isCorrect = 0;
         for (int i = 0; i < _pressedColors.Length; i++)
             _pressedColors[i].material.color = Color.gray;
     }
     
     private void CheckPassword()
     {
-        for (int i = 0; i < _pressedColors.Length; i++)
-            Debug.Log("Pressed Color:   " + _pressedColors[i].material.color);
-        for (int i = 0; i < _answerColors.Length; i++)
-            Debug.Log("Anser Color: " + _answerColors[i]);
-        int isCorrect = 0;
-        if (_pressedColors[0].material.color == _answerColors[0])
-            isCorrect++;
-        if (_pressedColors[1].material.color == _answerColors[1])
-            isCorrect++;
-        if (_pressedColors[2].material.color == _answerColors[2])
-            isCorrect++;
-        if (_pressedColors[3].material.color == _answerColors[3])
-            isCorrect++;
-        Debug.Log(isCorrect);
-        if (isCorrect == 4)
+        if (_pressedColors[_index].material.color == _answerColors[_index])
+            _isCorrect++;
+
+        if (_isCorrect == 4)
             Debug.Log("B-B-B-B-B-Bingo");
     }
 
