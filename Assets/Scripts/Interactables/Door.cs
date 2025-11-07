@@ -23,7 +23,7 @@ namespace CodingChallenge.Interactable
             }
             else
             {
-                Quaternion targetRotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y + 90, transform.rotation.z);
+                Quaternion targetRotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z);
                 Vector3 targetPosition = new Vector3(transform.position.x * 1.103f, transform.position.y, transform.position.z * 0.727f);
                 StartCoroutine(CloseDoor(targetRotation, targetPosition));
             }
