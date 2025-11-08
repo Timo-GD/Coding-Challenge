@@ -56,8 +56,12 @@ namespace CodingChallenge.Minigames
             if (_pressedColors[_index].material.color == _answerColors[_index])
                 _isCorrect++;
 
-            if (_isCorrect == 4)
-                Debug.Log("B-B-B-B-B-Bingo");
+            if (_isCorrect < 4)
+                return;
+
+            MinigameManager.Instance.UpdateMinigameCount();
+            for (int i = 0; i < _pressedColors.Length; i++)
+                _pressedColors[i].material.color = new Color(180,136,17);
         }
 
     }
