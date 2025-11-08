@@ -1654,9 +1654,45 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3013565186722479113, guid: cd58556270b0cd54f8abef24edfcecbd, type: 3}
+      propertyPath: m_Size.x
+      value: 0.052021503
+      objectReference: {fileID: 0}
+    - target: {fileID: 3013565186722479113, guid: cd58556270b0cd54f8abef24edfcecbd, type: 3}
+      propertyPath: m_Size.y
+      value: 0.18208408
+      objectReference: {fileID: 0}
+    - target: {fileID: 3013565186722479113, guid: cd58556270b0cd54f8abef24edfcecbd, type: 3}
+      propertyPath: m_Size.z
+      value: 0.09982586
+      objectReference: {fileID: 0}
+    - target: {fileID: 3013565186722479113, guid: cd58556270b0cd54f8abef24edfcecbd, type: 3}
+      propertyPath: m_Center.x
+      value: 0.00088477135
+      objectReference: {fileID: 0}
+    - target: {fileID: 3013565186722479113, guid: cd58556270b0cd54f8abef24edfcecbd, type: 3}
+      propertyPath: m_Center.y
+      value: 0.064706326
+      objectReference: {fileID: 0}
+    - target: {fileID: 3013565186722479113, guid: cd58556270b0cd54f8abef24edfcecbd, type: 3}
+      propertyPath: m_Center.z
+      value: -0.1700592
+      objectReference: {fileID: 0}
     - target: {fileID: 6412986500000502315, guid: cd58556270b0cd54f8abef24edfcecbd, type: 3}
       propertyPath: m_Name
       value: AmmoClip
+      objectReference: {fileID: 0}
+    - target: {fileID: 6560503811188773741, guid: cd58556270b0cd54f8abef24edfcecbd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6560503811188773741, guid: cd58556270b0cd54f8abef24edfcecbd, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6560503811188773741, guid: cd58556270b0cd54f8abef24edfcecbd, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6560503811188773741, guid: cd58556270b0cd54f8abef24edfcecbd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1668,15 +1704,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6560503811188773741, guid: cd58556270b0cd54f8abef24edfcecbd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.33728
+      value: -6.3373
       objectReference: {fileID: 0}
     - target: {fileID: 6560503811188773741, guid: cd58556270b0cd54f8abef24edfcecbd, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.46174863
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6560503811188773741, guid: cd58556270b0cd54f8abef24edfcecbd, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.8870109
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6560503811188773741, guid: cd58556270b0cd54f8abef24edfcecbd, type: 3}
       propertyPath: m_LocalRotation.y
@@ -1688,7 +1724,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6560503811188773741, guid: cd58556270b0cd54f8abef24edfcecbd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -125
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6560503811188773741, guid: cd58556270b0cd54f8abef24edfcecbd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -2296,13 +2332,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5018571959370342520, guid: 1dc6e732dd418cf4eab25d95e52a4c10, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -19.3
+    - target: {fileID: 4141683661847925859, guid: 1dc6e732dd418cf4eab25d95e52a4c10, type: 3}
+      propertyPath: m_Size.y
+      value: 0.32984853
       objectReference: {fileID: 0}
-    - target: {fileID: 5018571959370342520, guid: 1dc6e732dd418cf4eab25d95e52a4c10, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -16.99
+    - target: {fileID: 4141683661847925859, guid: 1dc6e732dd418cf4eab25d95e52a4c10, type: 3}
+      propertyPath: m_Size.z
+      value: 1.4165072
+      objectReference: {fileID: 0}
+    - target: {fileID: 4141683661847925859, guid: 1dc6e732dd418cf4eab25d95e52a4c10, type: 3}
+      propertyPath: m_Center.y
+      value: 0.06763995
+      objectReference: {fileID: 0}
+    - target: {fileID: 4141683661847925859, guid: 1dc6e732dd418cf4eab25d95e52a4c10, type: 3}
+      propertyPath: m_Center.z
+      value: -0.2124008
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
