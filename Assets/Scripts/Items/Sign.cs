@@ -7,11 +7,14 @@ namespace CodingChallenge.Items
     public class Sign : Item
     {
         [SerializeField] private GameObject _minigame;
+
         private TextMeshPro _scoreText;
         private int _score = 0;
+        
         public override void Awake()
         {
             ColliderCheck[] scoreTriggers = _minigame.GetComponentsInChildren<ColliderCheck>();
+
             for (int i = 0; i < scoreTriggers.Length; i++)
                 scoreTriggers[i].OnHit += (score) => AddScore(score);
                 
@@ -20,12 +23,14 @@ namespace CodingChallenge.Items
         }
         private void AddScore(int increaseAmount)
         {
-            if (_score + increaseAmount > 100)
-            {
-                MinigameManager.Instance.UpdateMinigameCount();
-                return;
-            }
             _score += increaseAmount;
+
+            if (_score == 100)
+                MinigameManager.Instance.UpdateMinigameCount();
+
+            if (_score >= 1000)
+                _score = 999;
+
             _scoreText.text = "Score: " + _score;
         }
     }
