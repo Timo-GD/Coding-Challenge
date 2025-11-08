@@ -48,7 +48,7 @@ namespace CodingChallenge.Minigames
             _index = 0;
             _isCorrect = 0;
             for (int i = 0; i < _pressedColors.Length; i++)
-                _pressedColors[i].material.color = Color.gray;
+                _pressedColors[i].material.color = Color.black;
         }
 
         private void CheckPassword()
