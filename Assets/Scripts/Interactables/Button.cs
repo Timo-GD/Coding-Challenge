@@ -5,19 +5,15 @@ namespace CodingChallenge.Interactable
 {
     public class Button : InteractableObject
     {
+        public delegate void Pressed(Color buttonColor);
+        public event Pressed OnPress;
+
         private Vector3 _oldPosition;
         private Vector3 _targetPosition;
         private Color _color;
         private float _moveSpeed = 5f;
         private bool _isPressed;
 
-        public delegate void Pressed(Color buttonColor);
-        public event Pressed OnPress;
-
-        private void Awake()
-        {
-            _color = GetComponent<Renderer>().material.color;
-        }
         public override bool Use()
         {
             if (_isPressed)
@@ -32,6 +28,11 @@ namespace CodingChallenge.Interactable
             OnPress?.Invoke(_color);
             StartCoroutine(GoToPosition());
             return true;
+        }
+        
+        private void Awake()
+        {
+            _color = GetComponent<Renderer>().material.color;
         }
 
         private IEnumerator GoToPosition()

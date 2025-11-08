@@ -42,8 +42,10 @@ namespace CodingChallenge.Interactable
                 transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * _openSpeed);
                 yield return null;
             }
+            
             transform.position = targetPosition;
             transform.rotation = targetRotation;
+
             _isClosed = true;
             _isUsed = false;
             yield return null;
@@ -57,8 +59,10 @@ namespace CodingChallenge.Interactable
                 transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * _openSpeed);
                 yield return null;
             }
+
             transform.position = targetPosition;
             transform.rotation = targetRotation;
+
             _isClosed = false;
             _isUsed = false;
             yield return null;

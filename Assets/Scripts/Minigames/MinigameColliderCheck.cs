@@ -4,12 +4,12 @@ namespace CodingChallenge.Minigames
 {
     public class MinigameColliderCheck : MonoBehaviour
     {
+        public delegate void Hit(int scoreIncrease);
+        public event Hit OnHit;
+        
         [SerializeField] private int _points;
 
         private bool _isHit;
-
-        public delegate void Hit(int scoreIncrease);
-        public event Hit OnHit;
 
         private void OnCollisionEnter(Collision collision)
         {

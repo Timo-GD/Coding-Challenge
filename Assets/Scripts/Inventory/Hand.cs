@@ -85,7 +85,6 @@ namespace CodingChallenge.Inventory
             if (_heldItem != null)
                 return;
 
-
             if (!_inventorySystem.Equip(this, _itemCastHits[0].collider.GetComponent<Item>()))
                 return;
 
