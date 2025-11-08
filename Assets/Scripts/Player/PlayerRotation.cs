@@ -13,6 +13,7 @@ namespace CodingChallenge.Player
         {
             _rigidBody = GetComponentInParent<Rigidbody>();
             Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
         }
 
         private void FixedUpdate()
