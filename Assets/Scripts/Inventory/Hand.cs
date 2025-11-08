@@ -70,7 +70,7 @@ namespace CodingChallenge.Inventory
 
         private void TryPickUp()
         {
-            if (Physics.SphereCastNonAlloc(transform.position, .6f, transform.forward, _itemCastHits, 0, _interectableMask) == 0)
+            if (Physics.SphereCastNonAlloc(transform.parent.position, .1f, transform.parent.forward, _itemCastHits, 1.5f, _interectableMask) == 0)
                 return;
 
             if (_itemCastHits[0].collider.GetComponent<InteractableObject>() != null)
