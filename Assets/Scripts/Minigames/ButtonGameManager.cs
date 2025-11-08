@@ -9,6 +9,7 @@ namespace CodingChallenge.Minigames
         [SerializeField] private Button _greenButton;
         [SerializeField] private Button _blueButton;
         [SerializeField] private Button _yellowButton;
+        [SerializeField] private Material _prizeColor;
 
         private Renderer[] _pressedColors;
         private Color[] _answerColors;
@@ -61,7 +62,7 @@ namespace CodingChallenge.Minigames
 
             MinigameManager.Instance.UpdateMinigameCount();
             for (int i = 0; i < _pressedColors.Length; i++)
-                _pressedColors[i].material.color = new Color(180,136,17);
+                _pressedColors[i].material = _prizeColor;
         }
 
     }
