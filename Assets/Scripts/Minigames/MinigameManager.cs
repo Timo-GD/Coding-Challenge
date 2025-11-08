@@ -11,12 +11,12 @@ public class MinigameManager : MonoBehaviour
     {
         _instance = this;
     }
-    
+
     public void UpdateMinigameCount()
     {
         _count++;
-
-        if (_count == 2)
+        
+        if (_count == 3)
             WinPrize();
     }
 
