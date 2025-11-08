@@ -7541,7 +7541,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de9a0015e86d51a4d895e0d5c4af85ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _points: 100
+  _points: 50
 --- !u!65 &1597763372
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8700,7 +8700,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de9a0015e86d51a4d895e0d5c4af85ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _points: 100
+  _points: 25
 --- !u!65 &1924226272
 BoxCollider:
   m_ObjectHideFlags: 0
