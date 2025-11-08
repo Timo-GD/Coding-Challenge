@@ -13,19 +13,9 @@ namespace CodingChallenge.Minigames
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (_isHit)
-                return;
-
             if (collision.gameObject.CompareTag("Player"))
                 return;
-
             OnHit?.Invoke(_points);
-            _isHit = true;
-        }
-
-        private void OnCollisionExit(Collision collision)
-        {
-            _isHit = false;
         }
     }
 }
