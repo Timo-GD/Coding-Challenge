@@ -13,20 +13,20 @@ namespace CodingChallenge.Interactable
             if (_isUsed)
                 return false;
 
-            float doorRotation = Mathf.Round(transform.localRotation.eulerAngles.y) / Mathf.Round(Mathf.Abs(transform.localRotation.eulerAngles.y));
+            float doorRotation = Mathf.Round(transform.rotation.eulerAngles.y) / Mathf.Round(Mathf.Abs(transform.rotation.eulerAngles.y));
             if (float.IsNaN(doorRotation))
                 doorRotation = 1;
 
             _isUsed = true;
             if (!_isClosed)
             {
-                Quaternion targetRotation = Quaternion.Euler(transform.localRotation.eulerAngles.x, transform.localRotation.eulerAngles.y - 90, transform.localRotation.eulerAngles.z);
+                Quaternion targetRotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y - 90, transform.rotation.eulerAngles.z);
                 Vector3 targetPosition = transform.position + (transform.forward * doorRotation * .75f) + (transform.right * -doorRotation * .75f);
                 StartCoroutine(OpenDoor(targetRotation, targetPosition));
             }
             else
             {
-                Quaternion targetRotation = Quaternion.Euler(transform.localRotation.eulerAngles.x, transform.localRotation.eulerAngles.y + 90, transform.localRotation.eulerAngles.z);
+                Quaternion targetRotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y + 90, transform.rotation.eulerAngles.z);
                 Vector3 targetPosition = transform.position + (transform.forward * -doorRotation * .75f) + (transform.right * -doorRotation * .75f);
                 StartCoroutine(CloseDoor(targetRotation, targetPosition));
             }
@@ -38,12 +38,12 @@ namespace CodingChallenge.Interactable
         {
             while (Vector3.Distance(transform.rotation.eulerAngles, targetRotation.eulerAngles) > 0.5f)
             {
-                transform.localRotation = Quaternion.Lerp(transform.localRotation, targetRotation, Time.deltaTime * _openSpeed);
+                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * _openSpeed);
                 transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * _openSpeed);
                 yield return null;
             }
             transform.position = targetPosition;
-            transform.localRotation = targetRotation;
+            transform.rotation = targetRotation;
             _isClosed = true;
             _isUsed = false;
             yield return null;
@@ -53,12 +53,12 @@ namespace CodingChallenge.Interactable
         {
             while (Vector3.Distance(transform.rotation.eulerAngles, targetRotation.eulerAngles) > 0.5f)
             {
-                transform.localRotation = Quaternion.Lerp(transform.localRotation, targetRotation, Time.deltaTime * _openSpeed);
+                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * _openSpeed);
                 transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * _openSpeed);
                 yield return null;
             }
             transform.position = targetPosition;
-            transform.localRotation = targetRotation;
+            transform.rotation = targetRotation;
             _isClosed = false;
             _isUsed = false;
             yield return null;
