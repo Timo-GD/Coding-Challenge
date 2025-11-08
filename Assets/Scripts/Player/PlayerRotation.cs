@@ -12,6 +12,7 @@ namespace CodingChallenge.Player
         private void Awake()
         {
             _rigidBody = GetComponentInParent<Rigidbody>();
+            Cursor.visible = false;
         }
 
         private void FixedUpdate()
