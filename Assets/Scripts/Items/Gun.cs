@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using CodingChallenge.Inventory;
+using CodingChallenge.Player;
 using UnityEngine;
 
 namespace CodingChallenge.Items
@@ -8,6 +10,7 @@ namespace CodingChallenge.Items
     {
         [SerializeField] private GameObject _bulletGameObject;
         [SerializeField] private Transform _bulletExitPoint;
+        [SerializeField] private GameObject _crosshair;
 
         private List<GameObject> _bulletPool = new();
         private int _magazineSize;
@@ -17,6 +20,18 @@ namespace CodingChallenge.Items
         {
             base.Awake();
             _magazineSize = 30;
+        }
+
+        public override void Equip(Hand hand)
+        {
+            _crosshair.SetActive(true);
+            base.Equip(hand);
+        }
+
+        public override void DeEquip()
+        {
+            _crosshair.SetActive(false);
+            base.DeEquip();
         }
 
         public override IEnumerator Using()
