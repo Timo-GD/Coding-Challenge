@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1077812089034366521}
   - component: {fileID: 7085911514300003698}
   - component: {fileID: 6607080565548164017}
+  - component: {fileID: 4200498253439601336}
   m_Layer: 6
   m_Name: TopHat
   m_TagString: Head
@@ -80,7 +81,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30
@@ -97,6 +98,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac25274bf5a0f454693755be20d2a758, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!136 &4200498253439601336
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2209784167091325687}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.51147926
+  m_Height: 2.6289158
+  m_Direction: 1
+  m_Center: {x: 0, y: -0.27776408, z: 0.31107354}
 --- !u!1 &4040082415013297112
 GameObject:
   m_ObjectHideFlags: 0
@@ -125,7 +149,7 @@ Transform:
   m_GameObject: {fileID: 4040082415013297112}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: -0.527, z: 0.326}
   m_LocalScale: {x: 1, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -234,7 +258,7 @@ Transform:
   m_GameObject: {fileID: 7891933086031403330}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.473, z: 0.326}
   m_LocalScale: {x: 0.8, y: 1, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children: []
