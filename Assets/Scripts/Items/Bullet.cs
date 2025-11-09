@@ -4,7 +4,7 @@ namespace CodingChallenge.Items
 {
     public class Bullet : Item
     {
-        private int _bulletSpeed = 15;
+        private int _bulletSpeed = 20;
 
         public void Fire(Vector3 targetPosition)
         {
