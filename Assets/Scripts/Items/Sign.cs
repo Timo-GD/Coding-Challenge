@@ -23,10 +23,10 @@ namespace CodingChallenge.Items
         }
         private void AddScore(int increaseAmount)
         {
-            _score += increaseAmount;
-
-            if (_score == 100)
+            if (_score + increaseAmount >= 100 && _score < 100)
                 MinigameManager.Instance.UpdateMinigameCount();
+                
+            _score += increaseAmount;
 
             if (_score >= 1000)
                 _score = 999;
