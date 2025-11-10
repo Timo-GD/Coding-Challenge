@@ -5,7 +5,7 @@ namespace CodingChallenge.Interactable
 {
     public class Door : InteractableObject
     {
-        private bool _isClosed;
+        private bool _isOpen;
         private bool _isUsed;
         private float _openSpeed = 5f;
 
@@ -19,27 +19,31 @@ namespace CodingChallenge.Interactable
                 doorRotation = 1;
 
             _isUsed = true;
-            if (!_isClosed)
+            if (_isOpen)
             {
-                Quaternion targetRotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y - 90, transform.rotation.eulerAngles.z);
-                Vector3 targetPosition = transform.position + (transform.forward * doorRotation * .75f) + (transform.right * -doorRotation * .75f);
-                StartCoroutine(OpenDoor(targetRotation, targetPosition));
+                //The target position and rotations for closing the door;
+                Quaternion targetRotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y + 90, transform.rotation.eulerAngles.z);
+                Vector3 targetPosition = transform.position + (transform.forward * -doorRotation * .75f) + (transform.right * -doorRotation * .75f);
+                StartCoroutine(MoveDoor(targetRotation, targetPosition));
+                _isOpen = false;
             }
             else
             {
-                Quaternion targetRotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y + 90, transform.rotation.eulerAngles.z);
-                Vector3 targetPosition = transform.position + (transform.forward * -doorRotation * .75f) + (transform.right * -doorRotation * .75f);
-                StartCoroutine(CloseDoor(targetRotation, targetPosition));
+                //The target position and rotations for opening the door;
+                Quaternion targetRotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y - 90, transform.rotation.eulerAngles.z);
+                Vector3 targetPosition = transform.position + (transform.forward * doorRotation * .75f) + (transform.right * -doorRotation * .75f);
+                StartCoroutine(MoveDoor(targetRotation, targetPosition));
+                _isOpen = true;
             }
 
             return _isUsed;
         }
 
         /// <summary>
-        /// Moves the door to the opened position;
+        /// Moves the door to the target position and rotation;
         /// </summary>
         /// <returns></returns>
-        private IEnumerator OpenDoor(Quaternion targetRotation, Vector3 targetPosition)
+        private IEnumerator MoveDoor(Quaternion targetRotation, Vector3 targetPosition)
         {
             while (Vector3.Distance(transform.rotation.eulerAngles, targetRotation.eulerAngles) > 0.5f)
             {
@@ -51,28 +55,6 @@ namespace CodingChallenge.Interactable
             transform.position = targetPosition;
             transform.rotation = targetRotation;
 
-            _isClosed = true;
-            _isUsed = false;
-            yield return null;
-        }
-
-        /// <summary>
-        /// Moves the door to the closed position;
-        /// </summary>
-        /// <returns></returns>
-        private IEnumerator CloseDoor(Quaternion targetRotation, Vector3 targetPosition)
-        {
-            while (Vector3.Distance(transform.rotation.eulerAngles, targetRotation.eulerAngles) > 0.5f)
-            {
-                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * _openSpeed);
-                transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * _openSpeed);
-                yield return null;
-            }
-
-            transform.position = targetPosition;
-            transform.rotation = targetRotation;
-
-            _isClosed = false;
             _isUsed = false;
             yield return null;
         }
