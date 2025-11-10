@@ -16,6 +16,9 @@ namespace CodingChallenge.Items
         private int _magazineSize;
         private bool _isAutoFiring;
 
+        /// <summary>
+        /// Initiates the bullet object pool to pull the bullets that the gun has to fire from;
+        /// </summary>
         public override void Awake()
         {
             base.Awake();
@@ -54,6 +57,9 @@ namespace CodingChallenge.Items
             _isAutoFiring = false;
         }
 
+        /// <summary>
+        /// Reload the guns magazine size back to 30;
+        /// </summary>
         public void Reload()
         {
             _magazineSize = 30;

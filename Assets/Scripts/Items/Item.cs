@@ -18,7 +18,7 @@ namespace CodingChallenge.Items
         }
 
         /// <summary>
-        /// The general using function that all items inherit from;
+        /// The general Using function that all items inherit from;
         /// </summary>
         /// <returns></returns>
         public virtual IEnumerator Using()
@@ -27,7 +27,7 @@ namespace CodingChallenge.Items
         }
 
         /// <summary>
-        /// The general stopusing function that all items inherit from;
+        /// The general StopUsing function that all items inherit from;
         /// </summary>
         public virtual void StopUsing()
         {
@@ -35,7 +35,7 @@ namespace CodingChallenge.Items
         }
 
         /// <summary>
-        /// The general modeswitch function that all items inherit from;
+        /// The general ModeSwitch function that all items inherit from;
         /// </summary>
         public virtual void ModeSwitch()
         {
@@ -43,7 +43,7 @@ namespace CodingChallenge.Items
         }
 
         /// <summary>
-        /// The general equip function that all items inherit from;
+        /// The general Equip function that all items inherit from;
         /// </summary>
         /// <param name="hand">The hand that the item is being equiped to;</param>
         public virtual void Equip(Hand hand)
@@ -59,7 +59,7 @@ namespace CodingChallenge.Items
         }
 
         /// <summary>
-        /// The general deequip function that all items inherit from;
+        /// The general DeEquip function that all items inherit from;
         /// </summary>
         public virtual void DeEquip()
         {

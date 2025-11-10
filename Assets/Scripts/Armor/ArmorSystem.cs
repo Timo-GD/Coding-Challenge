@@ -44,7 +44,7 @@ namespace CodingChallenge.Armor
         }
 
         /// <summary>
-        /// Updates the position of the armorItem to prevent any desync issues;
+        /// Updates the position of the ArmorItem to prevent any desync issues;
         /// </summary>
         private void UpdateArmor()
         {

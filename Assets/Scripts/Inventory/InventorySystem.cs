@@ -34,8 +34,8 @@ namespace CodingChallenge.Inventory
         /// <summary>
         /// De-equips the item from the hand;
         /// </summary>
-        /// <param name="hand">The hand that the item has to deequiped from;</param>
-        /// <param name="selfdrop">If the item has called the deequip function itself;</param>
+        /// <param name="hand">The hand that the item has to de-equiped from;</param>
+        /// <param name="selfdrop">If the item has called the DeEquip function itself;</param>
         /// <returns></returns>
         public bool DeEquip(Hand hand, bool selfdrop)
         {
@@ -96,6 +96,8 @@ namespace CodingChallenge.Inventory
             {
                 int targetIndex;
 
+                //Switches the item to the next hand;
+                //If this hand is longer than the amount of hands go to the first hand;
                 if (_switchItem.ReadValue<float>() > 0)
                     targetIndex = (i + 1) % _hands.Length;
                 else

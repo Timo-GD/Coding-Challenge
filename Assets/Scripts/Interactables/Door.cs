@@ -14,6 +14,7 @@ namespace CodingChallenge.Interactable
             if (_isUsed)
                 return false;
 
+            //Calculates wether the door is already at an angle and how to rotate the door based on this angle;
             float doorRotation = Mathf.Round(transform.rotation.eulerAngles.y) / Mathf.Round(Mathf.Abs(transform.rotation.eulerAngles.y));
             if (float.IsNaN(doorRotation))
                 doorRotation = 1;

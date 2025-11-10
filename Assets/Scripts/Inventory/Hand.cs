@@ -42,7 +42,7 @@ namespace CodingChallenge.Inventory
         /// <summary>
         /// Drops the current item from the hand;
         /// </summary>
-        /// <param name="selfdrop">Wether the item drops itself;</param>
+        /// <param name="selfdrop">Wether the item calls the DropItem function itself for example when the item is thrown;</param>
         public void DropItem(bool selfdrop)
         {
             if (_heldItem == null)

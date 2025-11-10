@@ -15,6 +15,7 @@ namespace CodingChallenge.Armor
 
         public override void DeEquip()
         {
+            //Decreases the scale of the hat when it is dropped;
             transform.localScale = new Vector3(.5f, .25f, .5f);
             base.DeEquip();
         }
