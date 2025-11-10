@@ -29,12 +29,16 @@ namespace CodingChallenge.Interactable
             StartCoroutine(GoToPosition());
             return true;
         }
-        
+
         private void Awake()
         {
             _color = GetComponent<Renderer>().material.color;
         }
 
+        /// <summary>
+        /// Moves the button to the pressed position;
+        /// </summary>
+        /// <returns></returns>
         private IEnumerator GoToPosition()
         {
             while (Vector3.Distance(transform.position, _targetPosition) > 0.005f)
@@ -48,6 +52,10 @@ namespace CodingChallenge.Interactable
             yield return StartCoroutine(ReturnToPosition());
         }
 
+        /// <summary>
+        /// Moves the button back to it's original position;
+        /// </summary>
+        /// <returns></returns>
         private IEnumerator ReturnToPosition()
         {
             while (Vector3.Distance(transform.position, _oldPosition) > 0.005f)

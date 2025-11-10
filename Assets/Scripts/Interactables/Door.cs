@@ -8,7 +8,7 @@ namespace CodingChallenge.Interactable
         private bool _isClosed;
         private bool _isUsed;
         private float _openSpeed = 5f;
-        
+
         public override bool Use()
         {
             if (_isUsed)
@@ -32,9 +32,13 @@ namespace CodingChallenge.Interactable
                 StartCoroutine(CloseDoor(targetRotation, targetPosition));
             }
 
-            return base.Use();
+            return _isUsed;
         }
 
+        /// <summary>
+        /// Moves the door to the opened position;
+        /// </summary>
+        /// <returns></returns>
         private IEnumerator OpenDoor(Quaternion targetRotation, Vector3 targetPosition)
         {
             while (Vector3.Distance(transform.rotation.eulerAngles, targetRotation.eulerAngles) > 0.5f)
@@ -43,7 +47,7 @@ namespace CodingChallenge.Interactable
                 transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * _openSpeed);
                 yield return null;
             }
-            
+
             transform.position = targetPosition;
             transform.rotation = targetRotation;
 
@@ -52,6 +56,10 @@ namespace CodingChallenge.Interactable
             yield return null;
         }
 
+        /// <summary>
+        /// Moves the door to the closed position;
+        /// </summary>
+        /// <returns></returns>
         private IEnumerator CloseDoor(Quaternion targetRotation, Vector3 targetPosition)
         {
             while (Vector3.Distance(transform.rotation.eulerAngles, targetRotation.eulerAngles) > 0.5f)

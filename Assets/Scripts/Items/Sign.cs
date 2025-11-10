@@ -17,10 +17,15 @@ namespace CodingChallenge.Items
 
             for (int i = 0; i < scoreTriggers.Length; i++)
                 scoreTriggers[i].OnHit += (score) => AddScore(score);
-                
+
             _scoreText = GetComponentInChildren<TextMeshPro>();
             base.Awake();
         }
+        
+        /// <summary>
+        /// Increases the score by the increaseamount;
+        /// </summary>
+        /// <param name="increaseAmount">The amount the score has to be increased by;</param>
         private void AddScore(int increaseAmount)
         {
             if (_score + increaseAmount >= 100 && _score < 100)

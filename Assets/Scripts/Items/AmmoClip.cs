@@ -19,6 +19,10 @@ namespace CodingChallenge.Items
             yield return new WaitForSeconds(5f);
             Reload();
         }
+
+        /// <summary>
+        /// Reloads the magazine;
+        /// </summary>
         private void Reload()
         {
             _isEmpty = false;

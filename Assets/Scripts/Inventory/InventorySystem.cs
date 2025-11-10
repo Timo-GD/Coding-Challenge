@@ -13,6 +13,12 @@ namespace CodingChallenge.Inventory
         private Hand[] _hands;
         private bool _isAlreadyDropped;
 
+        /// <summary>
+        /// Equips the item into the hand;
+        /// </summary>
+        /// <param name="hand">The hand that has picked up the item and to which it has to be equiped;</param>
+        /// <param name="equipable">The item that has to be equiped;</param>
+        /// <returns></returns>
         public bool Equip(Hand hand, Item equipable)
         {
             if (_inventoryItems.ContainsKey(hand))
@@ -25,6 +31,12 @@ namespace CodingChallenge.Inventory
             return true;
         }
 
+        /// <summary>
+        /// De-equips the item from the hand;
+        /// </summary>
+        /// <param name="hand">The hand that the item has to deequiped from;</param>
+        /// <param name="selfdrop">If the item has called the deequip function itself;</param>
+        /// <returns></returns>
         public bool DeEquip(Hand hand, bool selfdrop)
         {
             if (_isAlreadyDropped)
@@ -55,6 +67,9 @@ namespace CodingChallenge.Inventory
                 UpdateHands();
         }
 
+        /// <summary>
+        /// Updates the position of the Item to prevent any desync issues;
+        /// </summary>
         private void UpdateHands()
         {
             foreach (KeyValuePair<Hand, Item> handAndItem in _inventoryItems)
@@ -63,7 +78,10 @@ namespace CodingChallenge.Inventory
                 handAndItem.Value.transform.rotation = handAndItem.Key.transform.rotation;
             }
         }
-
+        
+        /// <summary>
+        /// Switches the item from one hand to the next one;
+        /// </summary>
         private void SwitchItems()
         {
             if (_hands.Length == 0)

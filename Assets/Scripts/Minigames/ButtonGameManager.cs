@@ -31,6 +31,10 @@ namespace CodingChallenge.Minigames
             _yellowButton.OnPress += (buttonColor) => UpdateCode(buttonColor);
         }
 
+        /// <summary>
+        /// Updates the color of the code to the color of the button that is pressed;
+        /// </summary>
+        /// <param name="buttonColor">The color of the button that is pressed;</param>
         private void UpdateCode(Color buttonColor)
         {
             if (_index > 3)
@@ -40,10 +44,13 @@ namespace CodingChallenge.Minigames
             }
 
             _pressedColors[_index].material.color = buttonColor;
-            CheckPassword();
+            CheckCode();
             _index++;
         }
 
+        /// <summary>
+        /// Resets the code back to a blank canvas;
+        /// </summary>
         private void ResetCode()
         {
             _index = 0;
@@ -52,7 +59,10 @@ namespace CodingChallenge.Minigames
                 _pressedColors[i].material.color = Color.black;
         }
 
-        private void CheckPassword()
+        /// <summary>
+        /// Checks wether the code is correct;
+        /// </summary>
+        private void CheckCode()
         {
             if (_pressedColors[_index].material.color == _answerColors[_index])
                 _isCorrect++;

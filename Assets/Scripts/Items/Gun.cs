@@ -69,6 +69,9 @@ namespace CodingChallenge.Items
             }
         }
 
+        /// <summary>
+        /// Fires the rifle;
+        /// </summary>
         private void Fire()
         {
             if (_magazineSize <= 0)

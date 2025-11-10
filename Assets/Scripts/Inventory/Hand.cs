@@ -21,6 +21,10 @@ namespace CodingChallenge.Inventory
         private LayerMask _interectableMask;
         private bool _canUse;
 
+        /// <summary>
+        /// Gives the hand it's new items after a switch has occured;
+        /// </summary>
+        /// <param name="newItem">The new items that is held by that hand;</param>
         public void SwitchItem(Item newItem)
         {
             _heldItem = newItem;
@@ -35,6 +39,10 @@ namespace CodingChallenge.Inventory
             }
         }
 
+        /// <summary>
+        /// Drops the current item from the hand;
+        /// </summary>
+        /// <param name="selfdrop">Wether the item drops itself;</param>
         public void DropItem(bool selfdrop)
         {
             if (_heldItem == null)
@@ -68,6 +76,9 @@ namespace CodingChallenge.Inventory
                 Use();
         }
 
+        /// <summary>
+        /// Determines what has to happen with the item that the raycast collides with;
+        /// </summary>
         private void TryPickUp()
         {
             if (Physics.SphereCastNonAlloc(transform.position, .15f, transform.forward, _itemCastHits, 1f, _interectableMask) == 0)
@@ -92,6 +103,9 @@ namespace CodingChallenge.Inventory
             _heldItem = _itemCastHits[0].collider.GetComponent<Item>();
         }
 
+        /// <summary>
+        /// Uses the item that is currently being held;
+        /// </summary>
         private void Use()
         {
             if (_heldItem == null)
@@ -100,6 +114,9 @@ namespace CodingChallenge.Inventory
             StartCoroutine(_heldItem.Using());
         }
 
+        /// <summary>
+        /// Stops using the item that is currently being held;
+        /// </summary>
         private void StopUse()
         {
             if (_heldItem == null)
@@ -108,6 +125,9 @@ namespace CodingChallenge.Inventory
             _heldItem.StopUsing();
         }
 
+        /// <summary>
+        /// Switches the use mode of the item that is currently being held;
+        /// </summary>
         private void SwitchUseMode()
         {
             if (_heldItem == null)

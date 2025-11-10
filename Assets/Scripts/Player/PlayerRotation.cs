@@ -21,6 +21,9 @@ namespace CodingChallenge.Player
             Rotation();
         }
 
+        /// <summary>
+        /// Rotates the player according to the camera rotation;
+        /// </summary>
         private void Rotation()
         {
             float pannAxis = _camera.PanAxis.Value;

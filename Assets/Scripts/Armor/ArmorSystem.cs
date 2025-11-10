@@ -8,6 +8,11 @@ namespace CodingChallenge.Armor
         private Dictionary<ArmorItem, ArmorItem> _armorPieces = new();
         private ArmorItem[] _armorSlots;
 
+        /// <summary>
+        /// Equips the armor piece on the slot corresponding with the armor type;
+        /// </summary>
+        /// <param name="armorPiece">The armorpiece that needs to be equiped;</param>
+        /// <returns></returns>
         public bool Equip(ArmorItem armorPiece)
         {
             if (armorPiece == null)
@@ -38,6 +43,9 @@ namespace CodingChallenge.Armor
             UpdateArmor();
         }
 
+        /// <summary>
+        /// Updates the position of the armorItem to prevent any desync issues;
+        /// </summary>
         private void UpdateArmor()
         {
             foreach (KeyValuePair<ArmorItem, ArmorItem> armor in _armorPieces)

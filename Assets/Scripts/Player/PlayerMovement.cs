@@ -24,6 +24,9 @@ namespace CodingChallenge.Player
             HorizontalMovement();
         }
 
+        /// <summary>
+        /// Moves the player in the X and Z axis;
+        /// </summary>
         private void HorizontalMovement()
         {
 
@@ -37,6 +40,9 @@ namespace CodingChallenge.Player
             _rigidbody.linearVelocity = new Vector3(horizontalVelocity.x, _rigidbody.linearVelocity.y, horizontalVelocity.z);
         }
 
+        /// <summary>
+        /// Moves the player in the Y axis;
+        /// </summary>
         private void VerticalMovement()
         {
             if (!_isGrounded)
@@ -67,7 +73,7 @@ namespace CodingChallenge.Player
             _jump.Enable();
         }
 
-        private void ODisable()
+        private void OnDisable()
         {
             _move.Disable();
             _jump.Disable();
