@@ -1,4 +1,3 @@
-using CodingChallenge.Armor;
 using CodingChallenge.Inventory;
 using UnityEngine;
 

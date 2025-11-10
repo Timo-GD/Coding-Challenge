@@ -68,21 +68,10 @@ namespace CodingChallenge.Inventory
                 Use();
         }
 
-        private void OnDrawGizmos()
-        {
-            Gizmos.DrawWireSphere(transform.position + transform.forward * 1f, .15f);
-            Gizmos.DrawRay(transform.position, transform.forward * 1f);
-            // Gizmos.DrawWireSphere(transform.position, .25f);
-            // Gizmos.DrawRay(transform.position, transform.forward * 1.5f);
-        }
-
         private void TryPickUp()
         {
             if (Physics.SphereCastNonAlloc(transform.position, .15f, transform.forward, _itemCastHits, 1f, _interectableMask) == 0)
                 return;
-
-            // for(int i = 0; i < _itemCastHits.Length; i++)
-            //     Debug.Log(_itemCastHits[i].collider.gameObject);
 
             if (_itemCastHits[0].collider.GetComponent<InteractableObject>() != null)
             {

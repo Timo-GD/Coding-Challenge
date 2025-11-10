@@ -8,6 +8,7 @@ namespace CodingChallenge.Interactable
         private bool _isClosed;
         private bool _isUsed;
         private float _openSpeed = 5f;
+        
         public override bool Use()
         {
             if (_isUsed)

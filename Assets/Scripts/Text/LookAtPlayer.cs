@@ -1,11 +1,14 @@
 using UnityEngine;
 
-public class LookAtPlayer : MonoBehaviour
+namespace CodingChallenge.Text
 {
-    [SerializeField] private Transform _playerTransform;
-    
-    private void Update()
+    public class LookAtPlayer : MonoBehaviour
     {
-        transform.LookAt(new Vector3(_playerTransform.position.x, _playerTransform.position.y, _playerTransform.position.z));
+        [SerializeField] private Transform _playerTransform;
+
+        private void Update()
+        {
+            transform.LookAt(new Vector3(_playerTransform.position.x, _playerTransform.position.y, _playerTransform.position.z));
+        }
     }
 }
